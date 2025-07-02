@@ -1,11 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #b9026d;
+  --color-explore-background: #fefcef;
+  --color-explore-text: #8b6000;
+}
+
 html,
 body {
   background: black;
   overscroll-behavior: none;
   color: white;
   width: 100%;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -36,4 +43,12 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

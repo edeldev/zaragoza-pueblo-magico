@@ -4,7 +4,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Main, Administration } from "@/components";
+import { Main, Administration, ExploreZaragoza } from "@/components";
 import { IconCaretDown } from "@tabler/icons-react";
 import BACKGROUND from "@/public/zaragoza.png";
 
@@ -26,33 +26,33 @@ export default function Home() {
         "#hero-key",
         {
           opacity: 0,
-          duration: 0.2,
+          duration: 0.1,
         },
-        0.4
+        0.2
       )
       .to(
         "#zaragoza-text",
         {
           opacity: 1,
-          duration: 0.3,
+          duration: 0.2,
         },
-        0.6
+        0.3
       )
       .to(
         "#name",
         {
           opacity: 1,
-          duration: 0.5,
+          duration: 0.3,
         },
-        0.5
+        0.3
       )
       .to(
         "#year",
         {
           opacity: 1,
-          duration: 0.6,
+          duration: 0.4,
         },
-        0.6
+        0.4
       );
 
     return () => {
@@ -93,15 +93,15 @@ export default function Home() {
       </motion.div>
       <Administration />
 
-      <div className="bg-white sticky top-[var(--header-height,130px)] z-99 h-[100px] transition-all duration-300">
-        <p className="text-black">Hola</p>
-      </div>
+      <ExploreZaragoza />
 
       <div
         id="section-features"
-        className="min-h-screen bg-red-300 z-80 relative"
+        className="min-h-screen bg-amber-50 z-80 relative pt-20 scroll-mt-36"
       >
-        Hola
+        <div className="container mx-auto px-5 md:px-0">
+          <p className="text-black text-2xl">Conoce Zaragoza</p>
+        </div>
       </div>
     </Fragment>
   );
