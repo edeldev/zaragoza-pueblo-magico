@@ -1,33 +1,108 @@
+"use client";
+import { Fragment, useEffect } from "react";
 import Image from "next/image";
-import LOGO from "@/public/logo.png";
+import { gsap } from "gsap";
+import { motion } from "framer-motion";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Main, Administration } from "@/components";
+import { IconCaretDown } from "@tabler/icons-react";
 import BACKGROUND from "@/public/zaragoza.png";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Home() {
+  useEffect(() => {
+    const tl = gsap.timeline({
+      ease: "power2.out",
+      scrollTrigger: {
+        scrub: 1,
+      },
+    });
+
+    tl.to("#hero-key", { duration: 1, scale: 1 })
+      .to("#hero-main", { opacity: 0 }, "<")
+      .to("#hero-footer", { opacity: 0 }, "<")
+      .to(
+        "#hero-key",
+        {
+          opacity: 0,
+          duration: 0.2,
+        },
+        0.4
+      )
+      .to(
+        "#zaragoza-text",
+        {
+          opacity: 1,
+          duration: 0.3,
+        },
+        0.6
+      )
+      .to(
+        "#name",
+        {
+          opacity: 1,
+          duration: 0.5,
+        },
+        0.5
+      )
+      .to(
+        "#year",
+        {
+          opacity: 1,
+          duration: 0.6,
+        },
+        0.6
+      );
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      tl.kill();
+    };
+  }, []);
   return (
-    <div
-      className="min-h-screen flex flex-col items-center justify-center text-white px-6 text-center bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${BACKGROUND.src})`,
-      }}
-    >
-      <div className="bg-black bg-opacity-60 p-8 rounded-xl backdrop-blur-md max-w-2xl w-full">
-        <Image
-          src={LOGO}
-          alt="Logo"
-          width={100}
-          height={100}
-          className="mx-auto mb-6"
-        />
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          Página en Construcción
-        </h1>
-        <p className="text-lg md:text-sm">
-          Estamos trabajando para traerte una experiencia increíble.
-        </p>
-        <p className="text-md md:text-sm">
-          Agradecemos tu paciencia y comprensión.
-        </p>
+    <Fragment>
+      <div id="logo-mask" className="fixed top-0 w-full h-screen">
+        <section>
+          <picture
+            id="hero-key"
+            className="h-screen scale-125 block overflow-hidden fixed w-full"
+          >
+            <Image
+              id="hero-key-background"
+              src={BACKGROUND}
+              alt="background"
+              className="w-full h-full object-cover"
+            />
+          </picture>
+        </section>
       </div>
-    </div>
+      <Main />
+
+      <motion.div
+        id="hero-footer"
+        animate={{ y: [0, 10, 0] }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="fixed left-1/2 bottom-3 transform -translate-x-1/2"
+      >
+        <IconCaretDown size={30} className="text-[#B9026D]" />
+      </motion.div>
+      <Administration />
+
+      <div className="bg-white sticky top-[var(--header-height,130px)] z-99 h-[100px] transition-all duration-300">
+        <p className="text-black">Hola</p>
+      </div>
+
+      <div
+        id="section-features"
+        className="min-h-screen bg-red-300 z-80 relative"
+      >
+        Hola
+      </div>
+    </Fragment>
   );
 }
