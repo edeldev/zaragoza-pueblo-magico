@@ -2,8 +2,8 @@ import { IconCarFanFilled } from "@tabler/icons-react";
 
 export const Main = () => {
   return (
-    <div className="min-h-[calc(300dvh-130px)] mt-[110px] md:mt-[130px]">
-      <div className="fixed md:static w-full min-h-[calc(100dvh-130px)] flex items-center">
+    <div className="min-h-[300dvh] mt-[110px] md:mt-[130px]">
+      <div className="w-full min-h-[calc(100dvh-130px)] flex items-center">
         <div className="grid grid-cols-12 container mx-auto px-5 md:px-0">
           <div
             id="hero-main"
