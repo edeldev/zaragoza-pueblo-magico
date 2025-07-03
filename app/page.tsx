@@ -4,7 +4,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Main, Administration, ExploreZaragoza } from "@/components";
+import { Main, Administration, ExploreZaragoza, About } from "@/components";
 import { IconCaretDown } from "@tabler/icons-react";
 import BACKGROUND from "@/public/zaragoza.png";
 
@@ -95,14 +95,7 @@ export default function Home() {
 
       <ExploreZaragoza />
 
-      <div
-        id="section-features"
-        className="min-h-screen bg-amber-50 z-80 relative pt-20 scroll-mt-36"
-      >
-        <div className="container mx-auto px-5 md:px-0">
-          <p className="text-black text-2xl">Conoce Zaragoza</p>
-        </div>
-      </div>
+      <About />
     </Fragment>
   );
 }
