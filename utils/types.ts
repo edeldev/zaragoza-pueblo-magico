@@ -4,3 +4,9 @@ export type TExploreZaragoza = {
   text: string;
   link: string;
 };
+
+export type TAbout = {
+  id: number;
+  title: string;
+  caption: string;
+};
