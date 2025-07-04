@@ -18,3 +18,8 @@ export type TActivities = {
   categoryId: string;
   link: string;
 };
+
+export type TSlugBusines = {
+  id: number;
+  slug: string;
+};

@@ -2,10 +2,10 @@
 import { useEffect, useRef, useState } from "react";
 import {
   IconBuildingSkyscraper,
+  IconCashRegister,
   IconConfettiFilled,
   IconFountainFilled,
   IconRoute,
-  IconUser,
 } from "@tabler/icons-react";
 import { EXPLORE_ZARAGOZA } from "@/utils";
 import { IIcons } from "@/interface/icon";
@@ -14,10 +14,10 @@ import Link from "next/link";
 
 const Icons: IIcons = {
   IconRoute: IconRoute,
-  IconFountainFilled: IconFountainFilled,
-  IconConfettiFilled: IconConfettiFilled,
-  IconBuildingSkyscraper: IconBuildingSkyscraper,
-  IconUser: IconUser,
+  IconFountainFilled,
+  IconConfettiFilled,
+  IconBuildingSkyscraper,
+  IconCashRegister,
 };
 
 export const ExploreZaragoza = ({ activeSection }: IExploreZaragoza) => {
