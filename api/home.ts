@@ -1,9 +1,11 @@
 import { ENV } from "@/utils";
 import { query } from "./strapi";
-import { TCategoryId } from "./types";
+import { TCategoryId, TGetCategoryResponse } from "./types";
 import { RawImage, TActivities } from "@/interface/activities";
 
-export function getCategory({ categoryId }: TCategoryId) {
+export function getCategory({
+  categoryId,
+}: TCategoryId): Promise<TGetCategoryResponse> {
   let url = `activities?filters[activitiesCategory][slug][$contains]=${categoryId}&populate=*`;
 
   return query(url).then((res) => {

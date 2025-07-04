@@ -110,8 +110,6 @@ export default function Home() {
           <picture
             id="hero-key"
             className="h-screen scale-125 block overflow-hidden fixed w-full"
-            aria-label="Imagen de fondo principal"
-            role="img"
           >
             <Image
               id="hero-key-background"

@@ -29,15 +29,8 @@ export const ExploreZaragoza = ({ activeSection }: IExploreZaragoza) => {
   }, [activeSection]);
 
   const handleSelect = (id: number) => {
+    if (id === selectedId) return;
     setSelectedId(id);
-    const element = itemRefs.current[id];
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    }
 
     const target = document.querySelector(
       EXPLORE_ZARAGOZA.find((x) => x.id === id)?.link || ""

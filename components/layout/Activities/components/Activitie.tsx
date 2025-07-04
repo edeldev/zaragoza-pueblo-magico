@@ -15,10 +15,14 @@ export const Activitie = ({
   const [activities, setActivities] = useState<IActivities[]>([]);
 
   useEffect(() => {
-    getCategory({ categoryId }).then((res) => {
-      setActivities(res.activities);
-    });
-  }, []);
+    getCategory({ categoryId })
+      .then((res) => {
+        setActivities(res.activities);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+  }, [categoryId]);
 
   return (
     <Container id={section}>
