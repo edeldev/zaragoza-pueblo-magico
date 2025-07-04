@@ -27,8 +27,8 @@ export const EXPLORE_ZARAGOZA: TExploreZaragoza[] = [
   },
   {
     id: 5,
-    icon: "IconUser",
-    text: "Servidores y emprendedores",
-    link: "#users",
+    icon: "IconCashRegister",
+    text: "Comercios",
+    link: "#trade",
   },
 ];

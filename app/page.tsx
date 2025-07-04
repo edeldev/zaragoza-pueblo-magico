@@ -4,7 +4,13 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Main, Administration, ExploreZaragoza, About } from "@/components";
+import {
+  Main,
+  Administration,
+  ExploreZaragoza,
+  About,
+  Trade,
+} from "@/components";
 import { IconCaretDown } from "@tabler/icons-react";
 import BACKGROUND from "@/public/zaragoza.png";
 import { EXPLORE_ZARAGOZA } from "@/utils";
@@ -143,6 +149,8 @@ export default function Home() {
       <About />
 
       <Activities />
+
+      <Trade />
     </>
   );
 }
