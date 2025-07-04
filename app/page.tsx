@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
@@ -7,10 +7,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Main, Administration, ExploreZaragoza, About } from "@/components";
 import { IconCaretDown } from "@tabler/icons-react";
 import BACKGROUND from "@/public/zaragoza.png";
+import { EXPLORE_ZARAGOZA } from "@/utils";
+import { Activities } from "@/components/layout";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const [activeSection, setActiveSection] = useState<number>(
+    EXPLORE_ZARAGOZA[0].id
+  );
+
   useEffect(() => {
     const tl = gsap.timeline({
       ease: "power2.out",
@@ -60,13 +67,51 @@ export default function Home() {
       tl.kill();
     };
   }, []);
+
+  useEffect(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const match = EXPLORE_ZARAGOZA.find(
+              (item) => item.link === `#${id}`
+            );
+            if (match) {
+              setActiveSection(match.id);
+              break;
+            }
+          }
+        }
+      },
+      {
+        threshold: 0.9,
+        rootMargin: "-130px 0px 0px 0px",
+      }
+    );
+    observerRef.current = observer;
+
+    EXPLORE_ZARAGOZA.forEach(({ link }) => {
+      const el = document.querySelector(link);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <Fragment>
+    <>
       <div id="logo-mask" className="fixed top-0 w-full h-screen">
         <section>
           <picture
             id="hero-key"
             className="h-screen scale-125 block overflow-hidden fixed w-full"
+            aria-label="Imagen de fondo principal"
+            role="img"
           >
             <Image
               id="hero-key-background"
@@ -88,14 +133,18 @@ export default function Home() {
           ease: "easeInOut",
         }}
         className="fixed left-1/2 bottom-3 transform -translate-x-1/2"
+        aria-label="Desplázate hacia abajo"
+        role="presentation"
       >
         <IconCaretDown size={30} className="text-[#B9026D]" />
       </motion.div>
       <Administration />
 
-      <ExploreZaragoza />
+      <ExploreZaragoza activeSection={activeSection} />
 
       <About />
-    </Fragment>
+
+      <Activities />
+    </>
   );
 }

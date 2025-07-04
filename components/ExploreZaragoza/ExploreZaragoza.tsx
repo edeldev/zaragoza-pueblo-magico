@@ -1,6 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
-import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import {
   IconBuildingSkyscraper,
   IconConfettiFilled,
@@ -10,6 +9,8 @@ import {
 } from "@tabler/icons-react";
 import { EXPLORE_ZARAGOZA } from "@/utils";
 import { IIcons } from "@/interface/icon";
+import { IExploreZaragoza } from "./types";
+import Link from "next/link";
 
 const Icons: IIcons = {
   IconRoute: IconRoute,
@@ -19,11 +20,13 @@ const Icons: IIcons = {
   IconUser: IconUser,
 };
 
-export const ExploreZaragoza = () => {
-  const [selectedId, setSelectedId] = useState<number | null>(
-    EXPLORE_ZARAGOZA[0].id
-  );
+export const ExploreZaragoza = ({ activeSection }: IExploreZaragoza) => {
+  const [selectedId, setSelectedId] = useState<number | null>(activeSection);
   const itemRefs = useRef<Record<number, HTMLLIElement | null>>({});
+
+  useEffect(() => {
+    setSelectedId(activeSection);
+  }, [activeSection]);
 
   const handleSelect = (id: number) => {
     setSelectedId(id);
@@ -35,6 +38,13 @@ export const ExploreZaragoza = () => {
         block: "nearest",
       });
     }
+
+    const target = document.querySelector(
+      EXPLORE_ZARAGOZA.find((x) => x.id === id)?.link || ""
+    );
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -44,11 +54,14 @@ export const ExploreZaragoza = () => {
           const isSelected = explore.id === selectedId;
           const IconComponent = Icons[explore.icon];
           return (
-            <Link key={explore.id} href={explore.link}>
-              <li
-                ref={(el) => {
-                  itemRefs.current[explore.id] = el;
-                }}
+            <li
+              key={explore.id}
+              ref={(el) => {
+                itemRefs.current[explore.id] = el;
+              }}
+            >
+              <Link
+                href={explore.link}
                 onClick={() => handleSelect(explore.id)}
               >
                 <div className="text-black flex flex-col items-center gap-1 justify-center">
@@ -71,8 +84,8 @@ export const ExploreZaragoza = () => {
                     {explore.text}
                   </span>
                 </div>
-              </li>
-            </Link>
+              </Link>
+            </li>
           );
         })}
       </ul>
