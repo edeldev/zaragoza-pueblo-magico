@@ -40,7 +40,7 @@ export const BusinessByCommerce = ({ slug }: IBusinessByCommerce) => {
     };
 
     fetchBusiness();
-  }, []);
+  }, [slug]);
 
   if (!business || business.length === 0) return null;
 
