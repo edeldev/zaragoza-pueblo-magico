@@ -4,7 +4,7 @@ export const Main = () => {
   return (
     <div className="min-h-[300dvh] mt-[110px] md:mt-[130px]">
       <div className="w-full min-h-[calc(100dvh-130px)] flex items-center">
-        <div className="grid grid-cols-12 container mx-auto px-5 md:px-0">
+        <div className="grid grid-cols-12 container mx-auto px-5 lg:px-0">
           <div
             id="hero-main"
             className="col-span-12 md:col-span-6 space-y-5 text-white shadow-md bg-black/20 backdrop-blur-md rounded-xl p-8"

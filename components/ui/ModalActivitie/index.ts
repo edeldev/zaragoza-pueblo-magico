@@ -1,0 +1,1 @@
+export { ModalActivitie } from "./ModalActivitie";

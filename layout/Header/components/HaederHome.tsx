@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { IconMenu } from "@tabler/icons-react";
 import LOGO_ZARAGOZA from "@/public/logo-zaragoza-light.png";
 
-export const Header = () => {
+export const HeaderHome = () => {
   const headerRef = useRef<HTMLElement>(null);
   const [isFeaturesInView, setIsFeaturesInView] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -104,11 +104,11 @@ export const Header = () => {
         backdropFilter: isFeaturesInView ? "blur(10px)" : "blur(0px)",
       }}
       transition={{
-        duration: hasScrolled ? 0.5 : 0,
+        duration: 0,
         ease: [0.25, 0.46, 0.45, 0.94],
         backdropFilter: { duration: hasScrolled ? 0.3 : 0 },
       }}
-      className="fixed w-full px-5 md:px-0 z-99 top-0"
+      className="fixed w-full px-5 lg:px-0 z-99 top-0"
     >
       <motion.div
         initial={{

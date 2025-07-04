@@ -10,3 +10,11 @@ export type TAbout = {
   title: string;
   caption: string;
 };
+
+export type TActivities = {
+  id: number;
+  title: string;
+  section: string;
+  categoryId: string;
+  link: string;
+};

@@ -11,7 +11,7 @@ export const EXPLORE_ZARAGOZA: TExploreZaragoza[] = [
     id: 2,
     icon: "IconFountainFilled",
     text: "Atractivos turísticos",
-    link: "#activities",
+    link: "#tourist-attractions",
   },
   {
     id: 3,
