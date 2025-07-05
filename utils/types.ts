@@ -23,3 +23,22 @@ export type TSlugBusines = {
   id: number;
   slug: string;
 };
+
+export type TSocialMedia = {
+  name: string;
+  url: string;
+  color: string;
+  Icon: React.ComponentType<{ className?: string }>;
+};
+
+export type TFooterLink = {
+  id: number;
+  url: string;
+  text: string;
+};
+
+export type TContact = {
+  id: number;
+  number: string;
+  label: string;
+};
