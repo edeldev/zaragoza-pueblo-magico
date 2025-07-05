@@ -42,15 +42,15 @@ export default function Home() {
           opacity: 0,
           duration: 0.1,
         },
-        0.2
+        0.12
       )
       .to(
         "#zaragoza-text",
         {
           opacity: 1,
-          duration: 0.2,
+          duration: 0.3,
         },
-        0.3
+        0.17
       )
       .to(
         "#name",
@@ -58,15 +58,15 @@ export default function Home() {
           opacity: 1,
           duration: 0.3,
         },
-        0.3
+        0.19
       )
       .to(
         "#year",
         {
           opacity: 1,
-          duration: 0.4,
+          duration: 0.3,
         },
-        0.4
+        0.25
       );
 
     return () => {
