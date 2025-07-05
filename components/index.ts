@@ -4,4 +4,5 @@ export { ExploreZaragoza } from "./ExploreZaragoza";
 export { About } from "./About";
 export { Activities } from "./layout";
 export { Trade } from "./Trade";
+export { Report } from "./Report";
 export * from "./ui";

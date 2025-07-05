@@ -10,6 +10,7 @@ import {
   ExploreZaragoza,
   About,
   Trade,
+  Report,
 } from "@/components";
 import { IconCaretDown } from "@tabler/icons-react";
 import BACKGROUND from "@/public/zaragoza.png";
@@ -122,6 +123,8 @@ export default function Home() {
               src={BACKGROUND}
               alt="background"
               className="w-full h-full object-cover"
+              placeholder="blur"
+              priority
             />
           </picture>
         </section>
@@ -151,6 +154,8 @@ export default function Home() {
       <Activities />
 
       <Trade />
+
+      <Report />
     </>
   );
 }

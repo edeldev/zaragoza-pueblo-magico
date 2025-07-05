@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { SHARED_PLATFORM } from "@/utils/sharedPlatform";
 import { ISocialShareButton } from "./types";
