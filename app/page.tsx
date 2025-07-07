@@ -129,6 +129,11 @@ export default function Home() {
           </picture>
         </section>
       </div>
+
+      <div
+        className="fixed top-0 left-0 w-full h-screen bg-black/15 pointer-events-none z-1"
+        aria-hidden="true"
+      />
       <Main />
 
       <motion.div

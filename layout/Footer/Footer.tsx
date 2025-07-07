@@ -26,7 +26,7 @@ export const Footer = () => {
         <FooterInstitutions />
       </Container>
 
-      <div className="bg-primary py-3 text-center">
+      <div className="bg-primary py-3 text-center z-1 relative">
         <span className="text-white">
           © 2025 Zaragoza N.L | México Desconocido
         </span>
