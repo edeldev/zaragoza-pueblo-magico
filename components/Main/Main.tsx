@@ -23,7 +23,7 @@ export const Main = () => {
   }, [isModalOpen]);
 
   return (
-    <div className="min-h-[350dvh] md:min-h-[300dvh] relative">
+    <div className="min-h-[400dvh] md:min-h-[300dvh] relative">
       <div className="min-h-screen flex flex-col justify-center gap-20 items-center py-10 text-center">
         <div className="space-y-2 z-1">
           <h1 className="text-5xl md:text-8xl font-bold text-white">

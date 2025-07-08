@@ -64,6 +64,7 @@ export function getBusinessesBySubcategory({
         schedule,
         ubication,
         icon,
+        ubicationMap,
       } = busines;
 
       return {
@@ -75,6 +76,7 @@ export function getBusinessesBySubcategory({
         schedule,
         ubication,
         icon,
+        ubicationMap,
       };
     });
 

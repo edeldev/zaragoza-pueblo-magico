@@ -12,4 +12,5 @@ export type TBusines = {
   schedule?: string;
   ubication: string;
   icon: string;
+  ubicationMap: string;
 };

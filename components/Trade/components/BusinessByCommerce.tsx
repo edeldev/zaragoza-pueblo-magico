@@ -13,6 +13,7 @@ import {
   IconPhone,
   IconShoppingCart,
 } from "@tabler/icons-react";
+import Link from "next/link";
 
 const ICONS: Record<string, React.FC<{ stroke: number; size: number }>> = {
   IconPerfume,
@@ -81,7 +82,13 @@ export const BusinessByCommerce = ({ slug }: IBusinessByCommerce) => {
               </div>
             </div>
 
-            <div className="flex justify-end mt-6">
+            <div className="flex justify-end mt-6 gap-2">
+              <Link
+                href={busines.ubicationMap}
+                className="px-3 py-1 border border-primary text-black rounded-md hover:bg-primary hover:text-white transition-colors duration-300"
+              >
+                Ver mapa
+              </Link>
               <a
                 href={`tel:${busines.phone}`}
                 className="px-3 py-1 bg-primary text-white rounded-md hover:bg-primary/80 transition-colors duration-300"
