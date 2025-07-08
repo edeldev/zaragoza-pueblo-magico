@@ -10,7 +10,7 @@ export const FooterSocialMedia = () => {
         <Image src={LOGO} alt="logo" width={150} height={150} />
       </Link>
       <hr className="w-full md:w-70 border-gray-300" />
-      <SocialMedia />
+      <SocialMedia colorText="text-gray-700" />
     </div>
   );
 };

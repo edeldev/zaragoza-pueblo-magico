@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { SOCIAL_MEDIA } from "@/utils/socialMedia";
+import { ISocialMedia } from "./types";
 
-export const SocialMedia = () => {
+export const SocialMedia = ({ colorText }: ISocialMedia) => {
   return (
     <ul className="flex justify-start items-center gap-4">
       {SOCIAL_MEDIA.map(({ name, color, url, Icon }) => (
         <li key={name} className="relative group">
           <Link
             href={url}
-            className="relative w-[40px] h-[40px] cursor-pointer rounded-[20%] flex items-center justify-center overflow-hidden text-gray-700 hover:text-white transition-all duration-300"
+            className={`relative w-[40px] h-[40px] cursor-pointer rounded-[20%] flex items-center justify-center overflow-hidden ${colorText} hover:text-white transition-all duration-300`}
             aria-label={name}
           >
             <div
