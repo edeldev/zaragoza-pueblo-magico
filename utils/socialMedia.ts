@@ -1,7 +1,6 @@
 import {
   IconBrandFacebook,
   IconBrandInstagram,
-  IconBrandWhatsapp,
   IconBrandX,
 } from "@tabler/icons-react";
 import { TSocialMedia } from "./types";
@@ -18,12 +17,6 @@ export const SOCIAL_MEDIA: TSocialMedia[] = [
     url: "",
     color: "#E1306C",
     Icon: IconBrandInstagram,
-  },
-  {
-    name: "WhatsApp",
-    url: "",
-    color: "#25D366",
-    Icon: IconBrandWhatsapp,
   },
   {
     name: "X",

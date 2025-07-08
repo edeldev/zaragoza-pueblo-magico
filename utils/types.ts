@@ -42,3 +42,9 @@ export type TContact = {
   number: string;
   label: string;
 };
+
+export type TMenu = {
+  id: number;
+  url: string;
+  label: string;
+};

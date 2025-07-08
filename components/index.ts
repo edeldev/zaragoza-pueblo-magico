@@ -1,4 +1,5 @@
 export { Main } from "./Main";
+export { Menu } from "./Menu";
 export { Administration } from "./Administration";
 export { ExploreZaragoza } from "./ExploreZaragoza";
 export { About } from "./About";
