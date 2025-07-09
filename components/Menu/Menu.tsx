@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import IMAGE from "@/public/logo-zaragoza-light.png";
+import IMAGE from "@/public/logo-zaragoza.png";
 import { IconX } from "@tabler/icons-react";
 import { MENU } from "@/utils/menu";
 import { SocialMedia } from "../ui";
@@ -33,7 +33,7 @@ export const Menu = ({ isOpen, onClose }: IMenu) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={onClose}
-            className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-xl"
+            className="fixed inset-0 z-[100] bg-white/90 backdrop-blur-[10px]"
           />
 
           <motion.div
