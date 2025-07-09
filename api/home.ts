@@ -1,9 +1,9 @@
 import { ENV } from "@/utils";
 import { query } from "./strapi";
 import {
-  TCategoryId,
   TGetBusinessesBySubcategory,
   TGetBusinessesBySubcategoryResponse,
+  TGetCategory,
   TGetCategoryResponse,
 } from "./types";
 import { RawImage, TActivities } from "@/interface/activities";
@@ -11,8 +11,13 @@ import { TBusines } from "@/interface/business";
 
 export function getCategory({
   categoryId,
-}: TCategoryId): Promise<TGetCategoryResponse> {
+  limit,
+}: TGetCategory): Promise<TGetCategoryResponse> {
   let url = `activities?filters[activitiesCategory][slug][$contains]=${categoryId}&populate=*`;
+
+  if (limit) {
+    url += `&pagination[limit]=${limit}`;
+  }
 
   return query(url).then((res) => {
     const { data, meta } = res;
@@ -49,7 +54,43 @@ export function getCategory({
 export function getBusinessesBySubcategory({
   slug,
 }: TGetBusinessesBySubcategory): Promise<TGetBusinessesBySubcategoryResponse> {
-  let url = `businesses?filters[commerceType][slug][$eq]=${slug}&pagination[limit]=4&populate=*`;
+  let url = `businesses?filters[commerceType][slug][$eq]=${slug}&populate=*`;
+
+  return query(url).then((res) => {
+    const { data, meta } = res;
+
+    const business = data.map((busines: TBusines) => {
+      const {
+        name,
+        slug,
+        commerceType: { name: nameCommerce },
+        phone,
+        service,
+        schedule,
+        ubication,
+        icon,
+        ubicationMap,
+      } = busines;
+
+      return {
+        name,
+        slug,
+        nameCommerce,
+        phone,
+        service,
+        schedule,
+        ubication,
+        icon,
+        ubicationMap,
+      };
+    });
+
+    return { business, pagination: meta?.pagination };
+  });
+}
+
+export async function getAllBusinesses(): Promise<TGetBusinessesBySubcategoryResponse> {
+  const url = `businesses?populate=*`;
 
   return query(url).then((res) => {
     const { data, meta } = res;

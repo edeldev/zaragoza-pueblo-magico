@@ -13,7 +13,7 @@ export const MENU: TMenu[] = [
   },
   {
     id: 3,
-    url: "/#tourist-attractions",
+    url: "/turismo",
     label: "Turismo",
   },
   {

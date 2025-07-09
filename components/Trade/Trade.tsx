@@ -1,6 +1,5 @@
 import { SLUG_BUSINESS } from "@/utils/slugBusiness";
-import { Button, Container } from "../ui";
-import { BusinessByCommerce } from "./components";
+import { BusinessByCommerce, Button, Container } from "../ui";
 
 export const Trade = () => {
   return (
@@ -9,7 +8,7 @@ export const Trade = () => {
         <h2 className="text-3xl font-bold">Comercios</h2>
 
         <Button
-          href={""}
+          href={"/turismo?tab=Comercios"}
           className="border border-primary hover:bg-primary/80 transition duration-300 text-primary hover:text-white rounded-full hidden md:block"
         >
           Ver todo
@@ -21,7 +20,7 @@ export const Trade = () => {
         ))}
       </div>
       <Button
-        href={""}
+        href={"/turismo?tab=Comercios"}
         className="border border-primary hover:bg-primary/80 transition duration-300 text-primary hover:text-white  rounded-full inline-block md:hidden mt-5"
       >
         Ver todo
