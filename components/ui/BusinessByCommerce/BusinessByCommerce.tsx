@@ -1,8 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getBusinessesBySubcategory } from "@/api/home";
+import { getAllBusinesses, getBusinessesBySubcategory } from "@/api/home";
 import { TBusines } from "@/interface/business";
-import { IBusinessByCommerce } from "./types";
 import {
   IconBook,
   IconClock,
@@ -14,6 +13,7 @@ import {
   IconShoppingCart,
 } from "@tabler/icons-react";
 import Link from "next/link";
+import { IBusinessByCommerce } from "./types";
 
 const ICONS: Record<string, React.FC<{ stroke: number; size: number }>> = {
   IconPerfume,
@@ -29,7 +29,9 @@ export const BusinessByCommerce = ({ slug }: IBusinessByCommerce) => {
   useEffect(() => {
     const fetchBusiness = async () => {
       try {
-        const res = await getBusinessesBySubcategory({ slug });
+        const res = slug
+          ? await getBusinessesBySubcategory({ slug })
+          : await getAllBusinesses();
         setBusiness(res.business);
       } catch (err: unknown) {
         if (err instanceof Error) {

@@ -1,0 +1,1 @@
+export { TabsAnimated } from "./TabsAnimated";

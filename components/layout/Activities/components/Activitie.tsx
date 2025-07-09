@@ -15,7 +15,7 @@ export const Activitie = ({
   const [activities, setActivities] = useState<IActivities[]>([]);
 
   useEffect(() => {
-    getCategory({ categoryId })
+    getCategory({ categoryId, limit: 4 })
       .then((res) => {
         setActivities(res.activities);
       })

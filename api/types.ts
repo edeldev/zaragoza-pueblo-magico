@@ -1,8 +1,9 @@
 import { IActivities } from "@/interface/activities";
 import { TBusines } from "@/interface/business";
 
-export type TCategoryId = {
+export type TGetCategory = {
   categoryId: string;
+  limit?: number;
 };
 
 export type TGetCategoryResponse = {

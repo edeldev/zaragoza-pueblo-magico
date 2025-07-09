@@ -5,3 +5,5 @@ export { ContainerPages } from "./ContainerPages";
 export { ModalActivitie } from "./ModalActivitie";
 export { SocialShareButtons } from "./SocialSharedButtons";
 export { SocialMedia } from "./SocialMedia";
+export { TabsAnimated } from "./TabsAnimated";
+export { BusinessByCommerce } from "./BusinessByCommerce";
