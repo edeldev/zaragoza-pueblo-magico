@@ -1,32 +1,58 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { IconCarFanFilled, IconX } from "@tabler/icons-react";
+import { ReactNode, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  IconCarFan,
+  IconCloud,
+  IconCloudRain,
+  IconSun,
+} from "@tabler/icons-react";
+import { getWeather } from "@/api/climate";
+import { IWeatherInfo, TWeatherIconType } from "@/interface/weather";
+import { ModalVideo } from "./components";
 
 export const Main = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [weatherData, setWeatherData] = useState<IWeatherInfo | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const weather = await getWeather();
+      setWeatherData(weather);
+    };
+    fetchData();
+  }, []);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
-    if (isModalOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = isModalOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
     };
   }, [isModalOpen]);
 
+  const getIcon = (icon: TWeatherIconType | ReactNode) => {
+    switch (icon) {
+      case "sun":
+        return <IconSun size={20} />;
+      case "cloud":
+        return <IconCloud size={20} />;
+      case "rain":
+        return <IconCloudRain size={20} />;
+      default:
+        return <IconCarFan size={20} />;
+    }
+  };
+
   return (
     <div className="min-h-[400dvh] md:min-h-[300dvh] relative">
-      <div className="min-h-screen flex flex-col justify-center gap-20 items-center py-10 text-center">
+      <div className="min-h-screen flex flex-col justify-center gap-20 items-center py-10 text-center px-5">
         <div className="space-y-2 z-1">
-          <h1 className="text-5xl md:text-8xl font-bold text-white">
+          <h1 className="text-[45px] md:text-8xl font-bold text-white">
             General Zaragoza
           </h1>
           <span className="text-white text-xl md:text-3xl">
@@ -62,49 +88,24 @@ export const Main = () => {
         </motion.svg>
 
         <div className="flex items-center gap-3 text-white shadow-md bg-black/30 backdrop-blur-md rounded-xl p-5 relative z-1">
-          <IconCarFanFilled size={20} />
+          {getIcon(weatherData?.icon ?? <IconCarFan size={20} />)}
           <div className="flex flex-col">
-            <span className="text-sm font-bold text-start">Clima Actual</span>
-            <span className="text-xs">Lluvia muy fuerte</span>
+            <span className="text-sm font-bold text-start">
+              {weatherData ? "Clima Actual" : "Clima no disponible"}
+            </span>
+            <span className="text-xs text-start capitalize">
+              {weatherData?.description ?? "No se pudo obtener el clima"}
+            </span>
           </div>
 
           <span>|</span>
-          <span className="font-bold text-xl">23°</span>
+          <span className="font-bold text-xl">
+            {weatherData?.temperature ? `${weatherData.temperature}°` : "--"}
+          </span>
         </div>
       </div>
 
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            className="fixed inset-0  bg-gradient-to-br from-[#0a0a1a] via-[#0b0b22] to-black flex items-center justify-center z-99 overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closeModal}
-          >
-            <motion.div
-              className="rounded-lg sm:max-w-xl md:max-w-3xl lg:max-w-6xl w-full relative flex flex-wrap md:flex-nowrap gap-5 px-5 overflow-hidden"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <video
-                src="https://www.w3schools.com/html/mov_bbb.mp4"
-                controls
-                autoPlay
-                className="w-full h-auto order-2 md:order-1 rounded-lg md:rounded-2xl"
-              />
-              <div
-                className="bg-[#36364e] hover:bg-[#36364e]/80 transition-colors duration-300 self-start rounded-full p-2 cursor-pointer order-1 md:order-2 ml-auto"
-                onClick={closeModal}
-              >
-                <IconX className="text-pink-400" />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ModalVideo isModalOpen={isModalOpen} closeModal={closeModal} />
     </div>
   );
 };

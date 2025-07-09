@@ -10,7 +10,7 @@ import {
   ExploreZaragoza,
   About,
   Trade,
-  Report,
+  Contact,
 } from "@/components";
 import { IconCaretDown } from "@tabler/icons-react";
 import BACKGROUND from "@/public/zaragoza.png";
@@ -34,7 +34,6 @@ export default function Home() {
     });
 
     tl.to("#hero-key", { duration: 1, scale: 1 })
-      .to("#hero-main", { opacity: 0 }, "<")
       .to("#hero-footer", { opacity: 0 }, "<")
       .to(
         "#hero-key",
@@ -160,7 +159,7 @@ export default function Home() {
 
       <Trade />
 
-      <Report />
+      <Contact />
     </>
   );
 }

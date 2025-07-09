@@ -8,8 +8,8 @@ export const MENU: TMenu[] = [
   },
   {
     id: 2,
-    url: "/alcaldesa",
-    label: "Alcaldesa",
+    url: "/gobierno",
+    label: "Gobierno",
   },
   {
     id: 3,
@@ -17,18 +17,13 @@ export const MENU: TMenu[] = [
     label: "Turismo",
   },
   {
-    id: 4,
-    url: "/servidores",
-    label: "Servidores",
-  },
-  {
     id: 5,
     url: "/#section-features",
-    label: "Exploré Zaragoza",
+    label: "Explore Zaragoza",
   },
   {
     id: 6,
-    url: "/contact",
+    url: "/#contact",
     label: "Contacto",
   },
 ];

@@ -2,11 +2,11 @@ import { Fragment } from "react";
 import { CONTACTS } from "@/utils/contacts";
 import { IconPhone } from "@tabler/icons-react";
 
-export const Report = () => {
+export const Contact = () => {
   return (
-    <div className="bg-white z-80 relative py-10">
+    <div id="contact" className="bg-white z-80 relative py-10 scroll-mt-46">
       <div className="container mx-auto px-5 lg:px-0">
-        <h3 className="text-4xl font-semibold mb-5">Reporta</h3>
+        <h3 className="text-4xl font-semibold mb-5">Contacto</h3>
         <div className="grid grid-cols-1 md:grid-cols-5 place-items-center gap-y-5 md:gap-y-0 text-center">
           {CONTACTS.map((contact, idx) => (
             <Fragment key={contact.id}>
