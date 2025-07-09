@@ -3,7 +3,7 @@ import { FOOTER_LINKS_CONTACT, FOOTER_LINKS_MENU } from "@/utils/FooterLinks";
 
 export const FooterLinks = () => {
   return (
-    <div className="flex justify-between items-start gap-5 md:max-w-xl md:mx-auto mt-5">
+    <div className="flex justify-between items-start gap-5 md:max-w-xl md:mx-auto mt-5 flex-wrap">
       <div>
         <h4 className="text-pink-950 font-semibold text-3xl">Enlaces</h4>
         <ul className="mt-4">

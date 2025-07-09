@@ -31,7 +31,7 @@ export const HeaderPages = () => {
   return (
     <>
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      <header className="fixed w-full px-5 lg-px-0 bg-black py-2 top-0">
+      <header className="fixed w-full px-5 lg-px-0 bg-black py-2 top-0 z-99">
         <div className="container mx-auto flex justify-between items-center h-[80px]">
           <Link href="/">
             <motion.div

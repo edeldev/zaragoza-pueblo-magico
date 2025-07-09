@@ -1,0 +1,1 @@
+export { Mayoress } from "./Mayoress";

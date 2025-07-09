@@ -8,7 +8,7 @@ export const MENU: TMenu[] = [
   },
   {
     id: 2,
-    url: "/gobierno",
+    url: "/gobierno-municipal",
     label: "Gobierno",
   },
   {

@@ -115,7 +115,7 @@ export default function Home() {
         <section>
           <picture
             id="hero-key"
-            className="h-screen scale-125 block overflow-hidden fixed w-full"
+            className="h-screen scale-125 block overflow-hidden w-full"
           >
             <Image
               id="hero-key-background"
