@@ -48,3 +48,17 @@ export type TMenu = {
   url: string;
   label: string;
 };
+
+export type TCouncilMember = {
+  id: number;
+  name: string;
+  position: string;
+  section: string;
+};
+
+export type TDependencie = {
+  no: number;
+  name: string;
+  department: string;
+  phone: string;
+};
