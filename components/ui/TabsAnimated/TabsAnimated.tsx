@@ -61,7 +61,7 @@ export const TabsAnimated = ({
       )}
 
       <div className="flex flex-col gap-4 container mx-auto pb-10">
-        <div className="flex items-center overflow-x-auto no-scrollbar space-x-3 pb-2 border-b border-gray-300">
+        <div className="flex items-center overflow-x-auto no-scrollbar space-x-3 pb-2 border-b border-gray-300 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] sm:[mask-image:none]">
           {tabs.map((tab) => (
             <button
               key={tab}

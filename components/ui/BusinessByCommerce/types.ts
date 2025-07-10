@@ -1,3 +1,3 @@
 export interface IBusinessByCommerce {
-  slug?: string;
+  slug: string;
 }
