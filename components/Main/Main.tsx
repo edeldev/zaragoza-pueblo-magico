@@ -52,7 +52,7 @@ export const Main = () => {
     <div className="min-h-[400dvh] md:min-h-[300dvh] relative">
       <div className="min-h-screen flex flex-col justify-center gap-20 items-center py-10 text-center px-5">
         <div className="space-y-2 z-1">
-          <h1 className="text-[45px] md:text-8xl font-bold text-white">
+          <h1 className="text-5xl md:text-8xl font-bold text-white">
             General Zaragoza
           </h1>
           <span className="text-white text-xl md:text-3xl">

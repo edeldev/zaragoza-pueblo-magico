@@ -34,6 +34,7 @@ export const Activities = ({ categoryId }: IActivitie) => {
       })
       .catch((err) => {
         console.error(err.message);
+        setActivities([]);
       });
   }, [categoryId]);
 
@@ -50,6 +51,13 @@ export const Activities = ({ categoryId }: IActivitie) => {
     };
   }, [open]);
 
+  if (activities.length === 0)
+    return (
+      <div className="text-center">
+        <span>Cargando...</span>
+      </div>
+    );
+
   return (
     <>
       <FocusCards cards={activities} open={openActivitie} />
@@ -58,6 +66,7 @@ export const Activities = ({ categoryId }: IActivitie) => {
           selectActivitie={selectActivitie}
           close={closeActivitie}
           isOpen={open}
+          setOpen={setOpen}
         />
       )}
     </>

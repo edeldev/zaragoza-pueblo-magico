@@ -10,12 +10,14 @@ export const ModalActivitie = ({
   selectActivitie,
   close,
   isOpen,
+  setOpen,
 }: IModalActivitie) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
           className="fixed inset-0 z-99 backdrop-blur-sm bg-black/30 pt-22"
+          onClick={() => setOpen(false)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

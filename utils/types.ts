@@ -62,3 +62,8 @@ export type TDependencie = {
   department: string;
   phone: string;
 };
+
+export type TBusines = {
+  id: string;
+  label: string;
+};

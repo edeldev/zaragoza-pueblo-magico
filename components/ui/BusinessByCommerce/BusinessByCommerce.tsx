@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getAllBusinesses, getBusinessesBySubcategory } from "@/api/home";
+import { getBusinessesBySubcategory } from "@/api/home";
 import { TBusines } from "@/interface/business";
 import {
   IconBook,
@@ -33,9 +33,7 @@ export const BusinessByCommerce = ({ slug }: IBusinessByCommerce) => {
   useEffect(() => {
     const fetchBusiness = async () => {
       try {
-        const res = slug
-          ? await getBusinessesBySubcategory({ slug })
-          : await getAllBusinesses();
+        const res = await getBusinessesBySubcategory({ slug });
         setBusiness(res.business);
       } catch (err: unknown) {
         if (err instanceof Error) {
@@ -49,7 +47,8 @@ export const BusinessByCommerce = ({ slug }: IBusinessByCommerce) => {
     fetchBusiness();
   }, [slug]);
 
-  if (!business || business.length === 0) return null;
+  if (!business || business.length === 0)
+    return <span className="text-center">No hay resultados</span>;
 
   return (
     <>

@@ -3,15 +3,15 @@ import { TSlugBusines } from "./types";
 export const SLUG_BUSINESS: TSlugBusines[] = [
   {
     id: 1,
-    slug: "store",
+    slug: "stores",
   },
   {
     id: 2,
-    slug: "paps",
+    slug: "stationery",
   },
   {
     id: 3,
-    slug: "farm",
+    slug: "pharmacies",
   },
   {
     id: 4,
