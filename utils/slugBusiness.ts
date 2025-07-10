@@ -15,6 +15,6 @@ export const SLUG_BUSINESS: TSlugBusines[] = [
   },
   {
     id: 4,
-    slug: "bou",
+    slug: "hotels-cabins",
   },
 ];

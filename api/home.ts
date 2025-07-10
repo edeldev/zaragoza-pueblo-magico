@@ -70,6 +70,8 @@ export function getBusinessesBySubcategory({
         ubication,
         icon,
         ubicationMap,
+        socialMedia,
+        web,
       } = busines;
 
       return {
@@ -82,6 +84,8 @@ export function getBusinessesBySubcategory({
         ubication,
         icon,
         ubicationMap,
+        socialMedia,
+        web,
       };
     });
 
@@ -106,6 +110,8 @@ export async function getAllBusinesses(): Promise<TGetBusinessesBySubcategoryRes
         ubication,
         icon,
         ubicationMap,
+        socialMedia,
+        web,
       } = busines;
 
       return {
@@ -118,6 +124,8 @@ export async function getAllBusinesses(): Promise<TGetBusinessesBySubcategoryRes
         ubication,
         icon,
         ubicationMap,
+        socialMedia,
+        web,
       };
     });
 

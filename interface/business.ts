@@ -13,4 +13,6 @@ export type TBusines = {
   ubication: string;
   icon: string;
   ubicationMap: string;
+  socialMedia?: string;
+  web?: string;
 };

@@ -4,6 +4,8 @@ import { getAllBusinesses, getBusinessesBySubcategory } from "@/api/home";
 import { TBusines } from "@/interface/business";
 import {
   IconBook,
+  IconBrandFacebook,
+  IconBuildingSkyscraper,
   IconClock,
   IconHanger,
   IconMapPin,
@@ -11,6 +13,7 @@ import {
   IconPerfume,
   IconPhone,
   IconShoppingCart,
+  IconWorld,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { IBusinessByCommerce } from "./types";
@@ -21,6 +24,7 @@ const ICONS: Record<string, React.FC<{ stroke: number; size: number }>> = {
   IconMedicineSyrup,
   IconHanger,
   IconShoppingCart,
+  IconBuildingSkyscraper,
 };
 
 export const BusinessByCommerce = ({ slug }: IBusinessByCommerce) => {
@@ -81,6 +85,34 @@ export const BusinessByCommerce = ({ slug }: IBusinessByCommerce) => {
                   <IconPhone className="text-primary" stroke={1.5} size={20} />
                   <span className="md:text-sm">{busines.phone}</span>
                 </div>
+                {busines.socialMedia && (
+                  <a
+                    href={busines.socialMedia}
+                    target="_blank"
+                    className="flex gap-2 items-center"
+                  >
+                    <IconBrandFacebook
+                      className="text-primary"
+                      stroke={1.5}
+                      size={20}
+                    />
+                    <span className="md:text-sm underline">Facebook</span>
+                  </a>
+                )}
+                {busines.web && (
+                  <a
+                    href={busines.web}
+                    target="_blank"
+                    className="flex gap-2 items-center w-fit"
+                  >
+                    <IconWorld
+                      className="text-primary"
+                      stroke={1.5}
+                      size={20}
+                    />
+                    <span className="md:text-sm underline">Sitio web</span>
+                  </a>
+                )}
               </div>
             </div>
 
