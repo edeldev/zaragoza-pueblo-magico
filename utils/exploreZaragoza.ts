@@ -20,12 +20,6 @@ export const EXPLORE_ZARAGOZA: TExploreZaragoza[] = [
     link: "#party",
   },
   {
-    id: 4,
-    icon: "IconBuildingSkyscraper",
-    text: "Hoteles y restaurantes",
-    link: "#hotels",
-  },
-  {
     id: 5,
     icon: "IconCashRegister",
     text: "Comercios",

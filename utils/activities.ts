@@ -15,11 +15,4 @@ export const ACTIVITIES: TActivities[] = [
     categoryId: "party",
     link: "/turismo?tab=Fiesta+y+eventos",
   },
-  {
-    id: 3,
-    title: "Hoteles y restaurantes",
-    section: "hotels",
-    categoryId: "hotels",
-    link: "/turismo?tab=Hoteles+y+restaurantes",
-  },
 ];
