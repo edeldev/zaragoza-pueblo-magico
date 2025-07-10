@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,17 +12,11 @@ import {
   Contact,
 } from "@/components";
 import { IconCaretDown } from "@tabler/icons-react";
-import { EXPLORE_ZARAGOZA } from "@/utils";
 import { Activities } from "@/components/layout";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const observerRef = useRef<IntersectionObserver | null>(null);
-  const [activeSection, setActiveSection] = useState<number>(
-    EXPLORE_ZARAGOZA[0].id
-  );
-
   useEffect(() => {
     const tl = gsap.timeline({
       ease: "power2.out",
@@ -72,41 +66,6 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    if (observerRef.current) {
-      observerRef.current.disconnect();
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            const match = EXPLORE_ZARAGOZA.find(
-              (item) => item.link === `#${id}`
-            );
-            if (match) {
-              setActiveSection(match.id);
-              break;
-            }
-          }
-        }
-      },
-      {
-        threshold: 0.9,
-        rootMargin: "-130px 0px 0px 0px",
-      }
-    );
-    observerRef.current = observer;
-
-    EXPLORE_ZARAGOZA.forEach(({ link }) => {
-      const el = document.querySelector(link);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <>
       <div id="logo-mask" className="fixed top-0 w-full h-screen">
@@ -147,7 +106,7 @@ export default function Home() {
       </motion.div>
       <Administration />
 
-      <ExploreZaragoza activeSection={activeSection} />
+      <ExploreZaragoza />
 
       <About />
 
