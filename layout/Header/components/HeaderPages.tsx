@@ -1,10 +1,8 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { IconMenu } from "@tabler/icons-react";
-import LOGO_ZARAGOZA from "@/public/logo-zaragoza-light.png";
 import { Menu } from "@/components";
 
 export const HeaderPages = () => {
@@ -86,12 +84,12 @@ export const HeaderPages = () => {
                     "radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%)",
                 }}
               />
-              <Image
-                src={LOGO_ZARAGOZA}
+              <img
+                src="/logo-zaragoza-light.png"
                 alt="logo"
                 width={80}
                 height={80}
-                className="w-full h-full object-contain relative z-10"
+                className="object-cover relative z-10"
               />
             </motion.div>
           </Link>

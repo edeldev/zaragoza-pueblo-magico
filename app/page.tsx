@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,7 +12,6 @@ import {
   Contact,
 } from "@/components";
 import { IconCaretDown } from "@tabler/icons-react";
-import BACKGROUND from "@/public/zaragoza.png";
 import { EXPLORE_ZARAGOZA } from "@/utils";
 import { Activities } from "@/components/layout";
 
@@ -117,13 +115,11 @@ export default function Home() {
             id="hero-key"
             className="h-screen scale-125 block overflow-hidden w-full"
           >
-            <Image
+            <img
               id="hero-key-background"
-              src={BACKGROUND}
+              src={"/zaragoza.png"}
               alt="background"
               className="w-full h-full object-cover"
-              placeholder="blur"
-              priority
             />
           </picture>
         </section>

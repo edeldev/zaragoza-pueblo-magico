@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { cn } from "@/utils";
-import Image from "next/image";
 import { IActivities } from "@/interface/activities";
 
 export const Card = React.memo(
@@ -28,10 +27,9 @@ export const Card = React.memo(
         hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
       )}
     >
-      <Image
+      <img
         src={card.images[0]}
         alt={card.name}
-        fill
         className="object-cover absolute inset-0 w-full h-full"
       />
       <div

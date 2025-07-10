@@ -1,13 +1,10 @@
-import Image from "next/image";
-import MAYORESS from "@/public/alcaldesa.webp";
-
 export const Mayoress = () => {
   return (
     <section className="w-full max-w-5xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <Image
-            src={MAYORESS}
+          <img
+            src="/alcaldesa.webp"
             alt="alcaldesa"
             width={800}
             height={445}

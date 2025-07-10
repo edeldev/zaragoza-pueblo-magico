@@ -1,5 +1,4 @@
 import { BlocksContent } from "@strapi/blocks-react-renderer";
-import { StaticImageData } from "next/image";
 
 export type RawImage = {
   url: string;
@@ -10,7 +9,7 @@ export interface IActivities {
   name: string;
   resume: string;
   description: BlocksContent;
-  images: StaticImageData[];
+  images: string[];
   ubication: string;
   locationHref: string;
 }

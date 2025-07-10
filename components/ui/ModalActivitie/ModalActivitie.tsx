@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
@@ -35,11 +34,10 @@ export const ModalActivitie = ({
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
             <div className="relative h-[400px] lg:h-[300px] overflow-hidden">
-              <Image
+              <img
                 src={selectActivitie.images[0]}
                 alt={selectActivitie.resume}
-                fill
-                className="object-cover z-0"
+                className="object-cover z-0 h-full w-full"
               />
 
               <div
@@ -78,7 +76,7 @@ export const ModalActivitie = ({
                 </div>
                 <div>
                   {selectActivitie.images.map((img) => (
-                    <Image
+                    <img
                       key={selectActivitie.slug}
                       src={img}
                       alt={selectActivitie.resume}

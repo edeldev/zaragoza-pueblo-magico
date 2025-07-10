@@ -2,8 +2,6 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import IMAGE from "@/public/logo-zaragoza.png";
 import { IconX } from "@tabler/icons-react";
 import { MENU } from "@/utils/menu";
 import { SocialMedia } from "../ui";
@@ -51,8 +49,8 @@ export const Menu = ({ isOpen, onClose }: IMenu) => {
               transition={{ duration: 0.5 }}
               className="w-[15%] md:w-[40%] xl:w-1/2 relative flex justify-center items-center"
             >
-              <Image
-                src={IMAGE}
+              <img
+                src="/logo-zaragoza.png"
                 alt="Decoración"
                 className="object-cover hidden md:block"
                 width={150}

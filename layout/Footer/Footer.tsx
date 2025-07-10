@@ -1,22 +1,18 @@
-import Image from "next/image";
 import { Container } from "@/components";
 import {
   FooterInstitutions,
   FooterLinks,
   FooterSocialMedia,
 } from "./components";
-import FOOTER_BACKGROUND from "@/public/slider-footer.svg";
 
 export const Footer = () => {
   return (
     <footer>
       <div className="relative bg-black w-full h-10 z-20">
-        <Image
-          src={FOOTER_BACKGROUND}
+        <img
+          src="/slider-footer.svg"
           alt="Footer background"
-          layout="fill"
-          objectFit="cover"
-          className="pointer-events-none"
+          className="pointer-events-none object-cover w-full h-full"
         />
       </div>
 
