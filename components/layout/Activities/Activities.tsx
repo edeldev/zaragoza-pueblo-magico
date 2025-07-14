@@ -57,7 +57,6 @@ export const Activities = () => {
           selectActivitie={selectActivitie}
           close={closeActivitie}
           isOpen={open}
-          setOpen={setOpen}
         />
       )}
     </>
