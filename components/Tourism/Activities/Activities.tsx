@@ -66,7 +66,6 @@ export const Activities = ({ categoryId }: IActivitie) => {
           selectActivitie={selectActivitie}
           close={closeActivitie}
           isOpen={open}
-          setOpen={setOpen}
         />
       )}
     </>
