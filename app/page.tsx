@@ -78,7 +78,7 @@ export default function Home() {
               id="hero-key-background"
               src={"/zaragoza.png"}
               alt="background"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover bg-gray-300"
             />
           </picture>
         </section>
