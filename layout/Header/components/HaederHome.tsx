@@ -179,7 +179,7 @@ export const HeaderHome = () => {
                 }}
               />
               <img
-                src="/logo-zaragoza-light.png"
+                src="/logo-zaragoza-light.webp"
                 alt="logo"
                 width={80}
                 height={80}

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,6 +17,8 @@ import { Activities } from "@/components/layout";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   useEffect(() => {
     const tl = gsap.timeline({
       ease: "power2.out",
@@ -74,11 +76,15 @@ export default function Home() {
             id="hero-key"
             className="h-screen scale-125 block overflow-hidden w-full"
           >
+            {!imageLoaded && (
+              <div className="absolute inset-0 z-10 backdrop-blur-xl bg-black/50 transition-opacity duration-300" />
+            )}
             <img
               id="hero-key-background"
-              src={"/zaragoza.png"}
+              src={"/background-zaragoza.webp"}
               alt="background"
-              className="w-full h-full object-cover bg-gray-300"
+              className="w-full h-full object-cover"
+              onLoad={() => setImageLoaded(true)}
             />
           </picture>
         </section>

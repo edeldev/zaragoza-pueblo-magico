@@ -1,3 +1,4 @@
+"use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
 import { IModalVideo } from "./types";
@@ -20,12 +21,18 @@ export const ModalVideo = ({ isModalOpen, closeModal }: IModalVideo) => {
             exit={{ scale: 0.8, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <video
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
-              controls
-              autoPlay
-              className="w-full h-auto order-2 md:order-1 rounded-lg md:rounded-2xl"
-            />
+            <div className="w-full h-auto aspect-video order-2 md:order-1 rounded-lg md:rounded-2xl overflow-hidden">
+              <iframe
+                src="https://www.youtube.com/embed/M5IAJWqLNCc?si=8RKkffyklpe8-LxJ"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="w-full h-full rounded-lg md:rounded-2xl"
+              />
+            </div>
+
             <div
               className="bg-[#36364e] hover:bg-[#36364e]/80 transition-colors duration-300 self-start rounded-full p-2 cursor-pointer order-1 md:order-2 ml-auto"
               onClick={closeModal}
