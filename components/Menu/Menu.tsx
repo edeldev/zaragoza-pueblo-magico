@@ -50,7 +50,7 @@ export const Menu = ({ isOpen, onClose }: IMenu) => {
               className="w-[15%] md:w-[40%] xl:w-1/2 relative flex justify-center items-center"
             >
               <img
-                src="/logo-zaragoza.png"
+                src="/logo-zaragoza.webp"
                 alt="Decoración"
                 className="object-cover hidden md:block"
                 width={150}

@@ -20,7 +20,7 @@ body {
 }
 
 #logo-mask {
-  background: url("/logo.png") center 25% no-repeat;
+  background: url("/logo.webp") center 25% no-repeat;
   background-size: 170px;
 }
 
