@@ -1,8 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
-import { gsap } from "gsap";
-import { motion } from "framer-motion";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
 import {
   Main,
   Administration,
@@ -11,62 +8,10 @@ import {
   Trade,
   Contact,
 } from "@/components";
-import { IconCaretDown } from "@tabler/icons-react";
 import { Activities } from "@/components/layout";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    const tl = gsap.timeline({
-      ease: "power2.out",
-      scrollTrigger: {
-        scrub: 1,
-      },
-    });
-
-    tl.to("#hero-key", { duration: 1, scale: 1 })
-      .to("#hero-footer", { opacity: 0 }, "<")
-      .to(
-        "#hero-key",
-        {
-          opacity: 0,
-          duration: 0.1,
-        },
-        0.12
-      )
-      .to(
-        "#zaragoza-text",
-        {
-          opacity: 1,
-          duration: 0.3,
-        },
-        0.17
-      )
-      .to(
-        "#name",
-        {
-          opacity: 1,
-          duration: 0.3,
-        },
-        0.19
-      )
-      .to(
-        "#year",
-        {
-          opacity: 1,
-          duration: 0.3,
-        },
-        0.25
-      );
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      tl.kill();
-    };
-  }, []);
 
   return (
     <>
@@ -96,20 +41,6 @@ export default function Home() {
       />
       <Main />
 
-      <motion.div
-        id="hero-footer"
-        animate={{ y: [0, 10, 0] }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="fixed left-1/2 bottom-3 transform -translate-x-1/2"
-        aria-label="Desplázate hacia abajo"
-        role="presentation"
-      >
-        <IconCaretDown size={30} className="text-[#B9026D]" />
-      </motion.div>
       <Administration />
 
       <ExploreZaragoza />
