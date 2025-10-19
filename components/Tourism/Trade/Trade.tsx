@@ -1,8 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BUSINESS } from "@/utils";
 import { IconMenu2 } from "@tabler/icons-react";
 import { CategoryFilters, ModalFilters, ResultBusiness } from "./components";
+import { useLockBodyScroll } from "@/hooks";
 
 export const Trade = () => {
   const [selectBusinesSlug, setSelectBusinesSlug] = useState<string>(
@@ -10,13 +11,7 @@ export const Trade = () => {
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    document.body.style.overflow = isModalOpen ? "hidden" : "";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isModalOpen]);
+  useLockBodyScroll(isModalOpen);
 
   return (
     <>
