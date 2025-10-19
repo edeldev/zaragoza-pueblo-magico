@@ -10,7 +10,8 @@ import {
 } from "@tabler/icons-react";
 import { getWeather } from "@/api/climate";
 import { IWeatherInfo, TWeatherIconType } from "@/interface/weather";
-import { ModalVideo } from "./components";
+import { ModalVideo, RenderRainDrops } from "./components";
+import { useLockBodyScroll } from "@/hooks";
 
 export const Main = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,13 +28,7 @@ export const Main = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  useEffect(() => {
-    document.body.style.overflow = isModalOpen ? "hidden" : "";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isModalOpen]);
+  useLockBodyScroll(isModalOpen);
 
   const getIcon = (icon: TWeatherIconType | ReactNode) => {
     switch (icon) {
@@ -50,46 +45,23 @@ export const Main = () => {
 
   const renderRainDrops = () => {
     if (weatherData?.icon === "rain") {
-      return (
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-10 overflow-hidden">
-          {[...Array(60)].map((_, index) => {
-            const left = Math.random() * 100;
-            const duration = 1 + Math.random() * 0.5;
-            const delay = Math.random() * 2;
-
-            return (
-              <motion.div
-                key={index}
-                className="absolute bg-white/40 rounded-full drop-shadow-lg"
-                style={{
-                  width: `${1 + Math.random() * 1.5}px`,
-                  height: `${10 + Math.random() * 10}px`,
-                  left: `${left}%`,
-                  top: `-100px`,
-                  opacity: Math.random() * 0.8 + 0.2,
-                }}
-                initial={{ y: -10 }}
-                animate={{ y: "110vh" }}
-                transition={{
-                  duration,
-                  delay,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              />
-            );
-          })}
-        </div>
-      );
+      return <RenderRainDrops />;
     }
 
     return null;
   };
 
   return (
-    <div className="relative">
-      <div className="min-h-screen flex flex-col justify-center gap-20 items-center py-10 text-center px-5">
-        <div className="space-y-2 z-1">
+    <main>
+      <section className="flex flex-col items-center justify-center gap-5 md:gap-20 text-white relative min-h-dvh w-full min-[1600px]:w-auto mx-auto min-[1600px]:rounded-[3px] overflow-hidden py-30 px-2 md:px-0">
+        <img
+          src="/background-zaragoza.webp"
+          alt="background"
+          className="fixed w-full h-full object-cover inset-0"
+        />
+        <div className="bg-black fixed inset-0 opacity-20"></div>
+
+        <div className="relative text-center">
           <h1 className="text-5xl md:text-8xl font-bold text-white">
             General Zaragoza
           </h1>
@@ -124,7 +96,6 @@ export const Main = () => {
             />
           </g>
         </motion.svg>
-
         <div className="flex items-center gap-3 text-white shadow-md bg-black/30 backdrop-blur-md rounded-xl p-5 relative z-1">
           {getIcon(weatherData?.icon ?? <IconCarFan size={20} />)}
           <div className="flex flex-col">
@@ -141,11 +112,10 @@ export const Main = () => {
             {weatherData?.temperature ? `${weatherData.temperature}°` : "--"}
           </span>
         </div>
-      </div>
+        {renderRainDrops()}
 
-      {renderRainDrops()}
-
-      <ModalVideo isModalOpen={isModalOpen} closeModal={closeModal} />
-    </div>
+        <ModalVideo isModalOpen={isModalOpen} closeModal={closeModal} />
+      </section>
+    </main>
   );
 };

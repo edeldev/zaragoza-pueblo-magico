@@ -1,25 +1,14 @@
 "use client";
-import { useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
 import { MENU } from "@/utils/menu";
 import { SocialMedia } from "../ui";
 import { IMenu } from "./types";
+import { useLockBodyScroll } from "@/hooks";
 
 export const Menu = ({ isOpen, onClose }: IMenu) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
+  useLockBodyScroll(isOpen);
   return (
     <AnimatePresence>
       {isOpen && (

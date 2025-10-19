@@ -16,7 +16,7 @@ export const HeaderHome = () => {
       const featuresElement = document.getElementById("section-features");
       if (featuresElement) {
         const rect = featuresElement.getBoundingClientRect();
-        const isInView = rect.top <= 220;
+        const isInView = rect.top <= 200;
         setIsFeaturesInView(isInView);
 
         const headerHeight = isInView ? 96 : 130;
@@ -95,7 +95,6 @@ export const HeaderHome = () => {
             : "rgba(0, 0, 0, 0)",
           paddingTop: isFeaturesInView ? "8px" : "20px",
           paddingBottom: isFeaturesInView ? "8px" : "20px",
-          backdropFilter: isFeaturesInView ? "blur(10px)" : "blur(0px)",
         }}
         animate={{
           backgroundColor: isFeaturesInView
@@ -103,12 +102,10 @@ export const HeaderHome = () => {
             : "rgba(0, 0, 0, 0)",
           paddingTop: isFeaturesInView ? "8px" : "20px",
           paddingBottom: isFeaturesInView ? "8px" : "20px",
-          backdropFilter: isFeaturesInView ? "blur(10px)" : "blur(0px)",
         }}
         transition={{
           duration: 0,
           ease: [0.25, 0.46, 0.45, 0.94],
-          backdropFilter: { duration: hasScrolled ? 0.3 : 0 },
         }}
         className="fixed w-full px-5 lg:px-0 z-99 top-0"
       >

@@ -27,15 +27,18 @@ export const ExploreZaragoza = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const isScrollingByClick = useRef(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const clickedId = useRef<number | null>(null);
 
   const handleSelect = (id: number) => {
     setSelectedId(id);
+    clickedId.current = id;
     isScrollingByClick.current = true;
 
     if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     scrollTimeout.current = setTimeout(() => {
       isScrollingByClick.current = false;
-    }, 800);
+      clickedId.current = null;
+    }, 1000);
   };
 
   useEffect(() => {
@@ -47,7 +50,10 @@ export const ExploreZaragoza = () => {
     }).filter(Boolean) as { id: number; el: HTMLElement }[];
 
     const updateActiveSection = () => {
-      if (isScrollingByClick.current) return;
+      if (isScrollingByClick.current && clickedId.current !== null) {
+        setSelectedId(clickedId.current);
+        return;
+      }
 
       let foundId: number | null = null;
       for (const { id, el } of sections) {
@@ -74,14 +80,29 @@ export const ExploreZaragoza = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (selectedId !== null) {
+      const selectedElement = document.querySelector(
+        `[data-id='${selectedId}']`
+      );
+      if (selectedElement) {
+        selectedElement.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+      }
+    }
+  }, [selectedId]);
+
   return (
-    <div className="bg-white shadow-2xl sticky top-[var(--header-height,130px)] z-99 transition-all duration-300">
-      <ul className="flex justify-start md:justify-center items-center min-h-[100px] px-5 md:px-0 gap-5 md:gap-10 overflow-x-auto no-scrollbar">
+    <div className="bg-white shadow-2xl sticky top-[var(--header-height,120px)] z-99 transition-all duration-300">
+      <ul className="flex justify-start xs:justify-center items-center min-h-[100px] px-5 md:px-0 gap-5 md:gap-10 overflow-x-auto no-scrollbar">
         {EXPLORE_ZARAGOZA.map((explore) => {
           const isSelected = explore.id === selectedId;
           const IconComponent = Icons[explore.icon];
           return (
-            <li key={explore.id}>
+            <li key={explore.id} data-id={explore.id}>
               <Link
                 href={explore.link}
                 onClick={() => handleSelect(explore.id)}
@@ -99,7 +120,7 @@ export const ExploreZaragoza = () => {
                     />
                   </div>
                   <span
-                    className={`text-xs md:text-base text-center ${
+                    className={`text-xs md:text-base text-center whitespace-nowrap ${
                       isSelected ? "text-explore-text" : "text-black"
                     }`}
                   >

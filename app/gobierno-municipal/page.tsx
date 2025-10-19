@@ -12,7 +12,7 @@ const PageAlcaldesa = () => {
   return (
     <TabsAnimated
       title="Gobierno municipal de General Zaragoza Nuevo León"
-      subtitle="Administración 2024 - 2017"
+      subtitle="Administración 2024 - 2027"
       tabs={TABS_GOVERNMENT}
       content={tabContent}
       queryKey="tab"

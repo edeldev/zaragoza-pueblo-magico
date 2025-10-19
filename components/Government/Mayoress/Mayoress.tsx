@@ -13,7 +13,10 @@ export const Mayoress = () => {
         </div>
         <div className="space-y-3">
           <h3 className="font-bold text-3xl">
-            Conoce a la Alcaldesa Judith Amaranta Ibarra Rodríguez
+            Conoce a la Alcaldesa <br />
+            <span className="text-text-orange">
+              Judith Amaranta Ibarra Rodríguez
+            </span>
           </h3>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla

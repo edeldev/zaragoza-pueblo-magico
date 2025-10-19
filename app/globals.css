@@ -5,6 +5,8 @@
   --color-explore-background: #fefcef;
   --color-explore-text: #8b6000;
   --color-footer: #ececec;
+  --color-text-orange: #fea33d;
+  --breakpoint-xs: 470px;
 }
 
 html,
