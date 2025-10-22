@@ -53,7 +53,7 @@ export const Main = () => {
 
   return (
     <main>
-      <section className="flex flex-col items-center justify-center gap-5 md:gap-20 text-white relative min-h-dvh w-full min-[1600px]:w-auto mx-auto min-[1600px]:rounded-[3px] overflow-hidden py-30 px-2 md:px-0">
+      <section className="flex flex-col items-center justify-center gap-20 text-white relative min-h-dvh w-full overflow-hidden py-30 px-2 md:px-0">
         <img
           src="/background-zaragoza.webp"
           alt="background"
