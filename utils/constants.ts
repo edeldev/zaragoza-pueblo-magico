@@ -1,8 +1,8 @@
 export const ENV = {
-  SERVER_HOST: "http://localhost:1337",
-  API_URL: "http://localhost:1337/api",
+  SERVER_HOST: process.env.NEXT_PUBLIC_SERVER_HOST,
+  API_URL: process.env.NEXT_PUBLIC_API_URL,
   CLIMATE: {
-    API_KEY_CLIMATE: "9e73ea306935fe6735e852a01a581a5d",
+    API_KEY_CLIMATE: process.env.NEXT_PUBLIC_API_KEY_CLIMATE,
     LAT: 23.9654,
     LON: -99.7707,
   },
