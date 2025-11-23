@@ -109,8 +109,8 @@ export const ExploreZaragoza = () => {
               >
                 <div className="text-black flex flex-col items-center gap-1 justify-center">
                   <div
-                    className={`p-3 ${
-                      isSelected ? "bg-explore-background border" : ""
+                    className={`p-3 border ${
+                      isSelected ? "bg-explore-background" : ""
                     } rounded-full`}
                   >
                     <IconComponent
