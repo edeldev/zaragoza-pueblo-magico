@@ -30,7 +30,8 @@ export const Main = () => {
         } else {
           setWeatherData(weather);
         }
-      } catch (error) {
+      } catch (error: unknown) {
+        console.error(error);
         setErrorWeather(true);
       } finally {
         setLoadingWeather(false);
