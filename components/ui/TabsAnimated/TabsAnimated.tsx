@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ContainerPages } from "@/components";
@@ -24,10 +24,11 @@ export const TabsAnimated = ({
 }: TabsAnimatedProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const defaultTab = tabs[0];
   const tabFromUrl = useQueryParams
-    ? searchParams.get(queryKey) || defaultTab
+    ? decodeURIComponent(searchParams.get(queryKey) || defaultTab)
     : defaultTab;
 
   const [activeTab, setActiveTab] = useState(tabFromUrl);
@@ -38,12 +39,28 @@ export const TabsAnimated = ({
     }
   }, [tabFromUrl, useQueryParams]);
 
+  useEffect(() => {
+    const idx = tabs.indexOf(activeTab);
+    const ref = tabRefs.current[idx];
+    if (ref) {
+      ref.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [activeTab, tabs]);
+
   const handleTabClick = (key: string) => {
     if (useQueryParams) {
       const params = new URLSearchParams(Array.from(searchParams.entries()));
       params.set(queryKey, key);
-      router.replace(`?${params.toString()}`);
+
+      const queryString = params.toString().replace(/\+/g, "%20");
+
+      router.replace(`?${queryString}`);
     }
+
     setActiveTab(key);
   };
 
@@ -62,17 +79,20 @@ export const TabsAnimated = ({
 
       <div className="flex flex-col gap-4 container mx-auto pb-10">
         <div className="flex items-center overflow-x-auto no-scrollbar space-x-3 pb-2 border-b border-gray-300 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] sm:[mask-image:none]">
-          {tabs.map((tab) => (
+          {tabs.map((tab, idx) => (
             <button
               key={tab}
+              ref={(el) => {
+                tabRefs.current[idx] = el;
+              }}
               onClick={() => handleTabClick(tab)}
               className={`cursor-pointer relative px-4 py-2 rounded-full whitespace-nowrap text-sm font-semibold transition-all duration-300
-                ${
-                  activeTab === tab
-                    ? "text-pink-100 bg-pink-600 shadow-md"
-                    : "text-gray-700 hover:bg-gray-100"
-                }
-              `}
+      ${
+        activeTab === tab
+          ? "text-pink-100 bg-pink-600 shadow-md"
+          : "text-gray-700 hover:bg-gray-100"
+      }
+    `}
             >
               {tab}
             </button>

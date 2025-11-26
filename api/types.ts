@@ -20,6 +20,12 @@ export type TGetBusinessesBySubcategory = {
   slug: string;
 };
 
+export type TGetBusinessesBySubcategoryHome = {
+  slug: string;
+  pageSize: number;
+  page: number;
+};
+
 export type TGetBusinessesBySubcategoryResponse = {
   business: TBusines[];
   pagination: {

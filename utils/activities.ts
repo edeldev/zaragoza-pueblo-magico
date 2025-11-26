@@ -6,13 +6,13 @@ export const ACTIVITIES: TActivities[] = [
     title: "Atractivos turísticos",
     section: "tourist-attractions",
     categoryId: "touristAttractive",
-    link: "/turismo?tab=Atractivos+turísticos",
+    link: `/turismo?tab=${encodeURIComponent("Atractivos turísticos")}`,
   },
   {
     id: 2,
     title: "Fiesta y eventos",
     section: "party",
     categoryId: "party",
-    link: "/turismo?tab=Fiesta+y+eventos",
+    link: `/turismo?tab=${encodeURIComponent("Fiesta y eventos")}`,
   },
 ];

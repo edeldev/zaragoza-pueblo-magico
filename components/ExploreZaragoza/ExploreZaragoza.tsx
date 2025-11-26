@@ -42,7 +42,7 @@ export const ExploreZaragoza = () => {
   };
 
   useEffect(() => {
-    const OFFSET = 184;
+    const OFFSET = 220;
     const sections = EXPLORE_ZARAGOZA.map((explore) => {
       const id = explore.link.replace("#", "");
       const element = document.getElementById(id);
@@ -96,7 +96,7 @@ export const ExploreZaragoza = () => {
   }, [selectedId]);
 
   return (
-    <div className="bg-white shadow-2xl sticky top-[var(--header-height,120px)] z-99 transition-all duration-300">
+    <div className="bg-white shadow-2xl sticky top-[var(--header-height)] z-99 transition-all duration-300">
       <ul className="flex justify-start xs:justify-center items-center min-h-[100px] px-5 md:px-0 gap-5 md:gap-10 overflow-x-auto no-scrollbar">
         {EXPLORE_ZARAGOZA.map((explore) => {
           const isSelected = explore.id === selectedId;
@@ -109,8 +109,10 @@ export const ExploreZaragoza = () => {
               >
                 <div className="text-black flex flex-col items-center gap-1 justify-center">
                   <div
-                    className={`p-3 border ${
-                      isSelected ? "bg-explore-background" : ""
+                    className={`p-3 ${
+                      isSelected
+                        ? "bg-explore-background ring-1 ring-gray-400"
+                        : ""
                     } rounded-full`}
                   >
                     <IconComponent

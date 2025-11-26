@@ -3,25 +3,50 @@ import { TFooterLink } from "./types";
 export const FOOTER_LINKS_MENU: TFooterLink[] = [
   {
     id: 1,
-    text: "Alcaldesa",
-    url: "",
+    text: "Inicio",
+    url: "/",
   },
   {
     id: 2,
-    text: "Conocé Zaragoza",
-    url: "",
+    text: "Gobierno",
+    url: "/gobierno-municipal",
   },
   {
     id: 3,
     text: "Turismo",
-    url: "",
+    url: "/turismo",
+  },
+  {
+    id: 4,
+    text: "Próximos eventos",
+    url: "/eventos",
+  },
+  {
+    id: 5,
+    text: "Noticias",
+    url: "/noticias",
   },
 ];
 
-export const FOOTER_LINKS_CONTACT: TFooterLink[] = [
+export const FOOTER_LINKS_EXPLORE: TFooterLink[] = [
   {
     id: 1,
-    text: "Presidencia",
-    url: "",
+    text: "Conocé Zaragoza",
+    url: "/#section-features",
+  },
+  {
+    id: 2,
+    text: "Atractivos turísticos",
+    url: "/#tourist-attractions",
+  },
+  {
+    id: 3,
+    text: "Fiesta y eventos",
+    url: "/#party",
+  },
+  {
+    id: 4,
+    text: "Comercios",
+    url: "/#trade",
   },
 ];

@@ -2,6 +2,7 @@ import { ENV } from "@/utils";
 import { query } from "./strapi";
 import {
   TGetBusinessesBySubcategory,
+  TGetBusinessesBySubcategoryHome,
   TGetBusinessesBySubcategoryResponse,
   TGetCategory,
   TGetCategoryResponse,
@@ -55,6 +56,53 @@ export function getBusinessesBySubcategory({
   slug,
 }: TGetBusinessesBySubcategory): Promise<TGetBusinessesBySubcategoryResponse> {
   let url = `businesses?filters[commerceType][slug][$eq]=${slug}&populate=*`;
+
+  return query(url).then((res) => {
+    const { data, meta } = res;
+
+    const business = data.map((busines: TBusines) => {
+      const {
+        name,
+        slug,
+        commerceType: { name: nameCommerce },
+        phone,
+        service,
+        schedule,
+        ubication,
+        icon,
+        ubicationMap,
+        socialMedia,
+        web,
+      } = busines;
+
+      return {
+        name,
+        slug,
+        nameCommerce,
+        phone,
+        service,
+        schedule,
+        ubication,
+        icon,
+        ubicationMap,
+        socialMedia,
+        web,
+      };
+    });
+
+    return { business, pagination: meta?.pagination };
+  });
+}
+
+export function getBusinessesBySubcategoryHome({
+  slug,
+  pageSize,
+  page,
+}: TGetBusinessesBySubcategoryHome): Promise<TGetBusinessesBySubcategoryResponse> {
+  let url = `businesses?filters[commerceType][slug][$eq]=${slug}&populate=*`;
+
+  if (page) url += `&pagination[page]=${page}`;
+  if (pageSize) url += `&pagination[pageSize]=${pageSize}`;
 
   return query(url).then((res) => {
     const { data, meta } = res;

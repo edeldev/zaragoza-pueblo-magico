@@ -19,12 +19,16 @@ export const Footer = () => {
       <Container>
         <FooterSocialMedia />
         <FooterLinks />
+
+        <div className="my-10 max-w-xl mx-auto">
+          <div className="h-[1px] w-full bg-gradient-to-r from-white via-neutral-200 to-white" />
+        </div>
         <FooterInstitutions />
       </Container>
 
       <div className="bg-primary py-3 text-center z-1 relative">
         <span className="text-white">
-          © 2025 Zaragoza N.L | México Desconocido
+          © 2025 Gobierno de General Zaragoza N.L.
         </span>
       </div>
     </footer>

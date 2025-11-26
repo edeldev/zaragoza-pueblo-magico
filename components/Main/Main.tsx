@@ -16,11 +16,26 @@ import { useLockBodyScroll } from "@/hooks";
 export const Main = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [weatherData, setWeatherData] = useState<IWeatherInfo | null>(null);
+  const [loadingWeather, setLoadingWeather] = useState(true);
+  const [errorWeather, setErrorWeather] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const weather = await getWeather();
-      setWeatherData(weather);
+      try {
+        setLoadingWeather(true);
+        const weather = await getWeather();
+
+        if (!weather) {
+          setErrorWeather(true);
+        } else {
+          setWeatherData(weather);
+        }
+      } catch (error: unknown) {
+        console.error(error);
+        setErrorWeather(true);
+      } finally {
+        setLoadingWeather(false);
+      }
     };
     fetchData();
   }, []);
@@ -97,19 +112,37 @@ export const Main = () => {
           </g>
         </motion.svg>
         <div className="flex items-center gap-3 text-white shadow-md bg-black/30 backdrop-blur-md rounded-xl p-5 relative z-1">
-          {getIcon(weatherData?.icon ?? <IconCarFan size={20} />)}
+          {loadingWeather ? (
+            <IconCarFan size={20} className="animate-spin" />
+          ) : errorWeather ? (
+            <IconCloud size={20} />
+          ) : (
+            getIcon(weatherData?.icon)
+          )}
           <div className="flex flex-col">
             <span className="text-sm font-bold text-start">
-              {weatherData ? "Clima Actual" : "Clima no disponible"}
+              {loadingWeather
+                ? "Cargando clima..."
+                : errorWeather
+                ? "Clima no disponible"
+                : "Clima Actual"}
             </span>
             <span className="text-xs text-start capitalize">
-              {weatherData?.description ?? "No se pudo obtener el clima"}
+              {loadingWeather
+                ? "Obteniendo información"
+                : errorWeather
+                ? "No hay información"
+                : weatherData?.description}
             </span>
           </div>
 
           <span>|</span>
           <span className="font-bold text-xl">
-            {weatherData?.temperature ? `${weatherData.temperature}°` : "--"}
+            {loadingWeather
+              ? "--"
+              : errorWeather
+              ? "--"
+              : `${weatherData?.temperature}°`}
           </span>
         </div>
         {renderRainDrops()}
