@@ -18,11 +18,16 @@ export const MENU: TMenu[] = [
   },
   {
     id: 5,
-    url: "/#section-features",
-    label: "Explore Zaragoza",
+    url: "/eventos",
+    label: "Próximos eventos",
   },
   {
     id: 6,
+    url: "/noticias",
+    label: "Noticias",
+  },
+  {
+    id: 7,
     url: "/#contact",
     label: "Contacto",
   },

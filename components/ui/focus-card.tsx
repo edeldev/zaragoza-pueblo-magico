@@ -23,7 +23,7 @@ export const Card = React.memo(
       onMouseLeave={() => setHovered(null)}
       onClick={() => open(card)}
       className={cn(
-        "cursor-pointer rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-70 w-full transition-all duration-300 ease-out",
+        "cursor-pointer rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-70 w-full transition-all duration-300 ease-out group",
         hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
       )}
     >
@@ -32,13 +32,19 @@ export const Card = React.memo(
         alt={card.name}
         className="object-cover absolute inset-0 w-full h-full"
       />
+
       <div
         className={cn(
-          "absolute inset-0 bg-black/50 flex items-end py-8 px-4 transition-opacity duration-300",
-          hovered === index ? "opacity-100" : "opacity-0"
+          "absolute inset-0 flex items-end py-8 px-4 transition-opacity duration-300",
+
+          "opacity-100",
+
+          "lg:opacity-0 lg:group-hover:opacity-100 lg:bg-black/50"
         )}
       >
-        <div className="capitalize text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
+        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/60 to-transparent lg:hidden"></div>
+
+        <div className="relative z-10 capitalize text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
           {card.name}
         </div>
       </div>

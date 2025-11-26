@@ -52,7 +52,7 @@ export const Review = () => {
       <h3 className="text-xl font-semibold text-text-orange">
         Logros Destacados
       </h3>
-      <ul className="list-disc ml-6 space-y-4 text-gray-300">
+      <ul className="list-disc ml-3 space-y-4 text-gray-300">
         <li>
           <strong>Seguridad Pública:</strong> El compromiso prioritario con la
           seguridad del municipio se ha traducido en una estrategia efectiva que

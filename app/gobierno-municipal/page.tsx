@@ -1,4 +1,4 @@
-import { TabsAnimated } from "@/components";
+import { AnimationPage, TabsAnimated } from "@/components";
 import { Council, Dependencies, Mayoress } from "@/components/Government";
 import { TABS_GOVERNMENT } from "@/utils";
 
@@ -10,13 +10,15 @@ const tabContent: Record<string, React.ReactNode> = {
 
 const PageAlcaldesa = () => {
   return (
-    <TabsAnimated
-      title="Gobierno municipal de General Zaragoza Nuevo León"
-      subtitle="Administración 2024 - 2027"
-      tabs={TABS_GOVERNMENT}
-      content={tabContent}
-      queryKey="tab"
-    />
+    <AnimationPage>
+      <TabsAnimated
+        title="Gobierno municipal de General Zaragoza Nuevo León"
+        subtitle="Administración 2024 - 2027"
+        tabs={TABS_GOVERNMENT}
+        content={tabContent}
+        queryKey="tab"
+      />
+    </AnimationPage>
   );
 };
 

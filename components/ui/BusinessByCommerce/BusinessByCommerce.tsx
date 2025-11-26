@@ -1,6 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getBusinessesBySubcategory } from "@/api/home";
+import {
+  getBusinessesBySubcategory,
+  getBusinessesBySubcategoryHome,
+} from "@/api/home";
 import { TBusines } from "@/interface/business";
 import {
   IconBook,
@@ -14,6 +17,7 @@ import {
   IconPhone,
   IconShoppingCart,
   IconWorld,
+  IconCarFan,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { IBusinessByCommerce } from "./types";
@@ -27,25 +31,44 @@ const ICONS: Record<string, React.FC<{ stroke: number; size: number }>> = {
   IconBuildingSkyscraper,
 };
 
-export const BusinessByCommerce = ({ slug }: IBusinessByCommerce) => {
+export const BusinessByCommerce = ({
+  slug,
+  home = false,
+}: IBusinessByCommerce) => {
   const [business, setBusiness] = useState<TBusines[] | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  const bussinesHome = home
+    ? getBusinessesBySubcategoryHome({
+        slug,
+        page: 1,
+        pageSize: 1,
+      })
+    : getBusinessesBySubcategory({ slug });
 
   useEffect(() => {
     const fetchBusiness = async () => {
       try {
-        const res = await getBusinessesBySubcategory({ slug });
+        setLoading(true);
+        const res = await bussinesHome;
         setBusiness(res.business);
       } catch (err: unknown) {
-        if (err instanceof Error) {
-          console.error(err.message);
-        } else {
-          console.error(err);
-        }
+        if (err instanceof Error) console.error(err.message);
+        else console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchBusiness();
   }, [slug]);
+
+  if (loading)
+    return (
+      <div className="w-full flex justify-center py-10">
+        <IconCarFan size={35} className="animate-spin text-primary" />
+      </div>
+    );
 
   if (!business || business.length === 0)
     return <span className="text-center">No hay resultados</span>;
@@ -120,7 +143,7 @@ export const BusinessByCommerce = ({ slug }: IBusinessByCommerce) => {
                 href={busines.ubicationMap}
                 className="px-3 py-1 border border-primary text-black rounded-md hover:bg-primary hover:text-white transition-colors duration-300"
               >
-                Ver mapa
+                Visitar
               </Link>
               <a
                 href={`tel:${busines.phone}`}

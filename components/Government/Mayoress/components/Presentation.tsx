@@ -8,7 +8,7 @@ export const Presentation = () => {
       <img
         src="/judith.webp"
         alt="Imagen de la alcaldesa de General Zaragoza Nuevo León"
-        className="object-cover w-full max-w-xs mask-fade"
+        className="object-contain w-full max-w-xs h-[400px] md:h-[500px] mask-fade aspect-square"
       />
       <div className="space-y-4 max-w-sm">
         <div>

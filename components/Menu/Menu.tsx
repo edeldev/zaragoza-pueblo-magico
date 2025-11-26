@@ -60,7 +60,7 @@ export const Menu = ({ isOpen, onClose }: IMenu) => {
               >
                 <IconX className="text-pink-400" />
               </div>
-              <nav className="h-full flex flex-col gap-5 justify-center overflow-auto">
+              <nav className="h-full flex flex-col gap-5 md:justify-center overflow-auto">
                 {MENU.map((menu) => (
                   <Link
                     key={menu.id}

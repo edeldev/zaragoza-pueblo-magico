@@ -23,6 +23,8 @@ const variants = {
 
 export const ImagesContent = ({ selectActivitie }: IImageContent) => {
   const [page, setPage] = useState(0);
+  const [loadingImg, setLoadingImg] = useState(true);
+
   const images = selectActivitie.images;
 
   const canGoBack = page > 0;
@@ -32,12 +34,17 @@ export const ImagesContent = ({ selectActivitie }: IImageContent) => {
     const nextPage = page + direction;
     if (nextPage >= 0 && nextPage < images.length) {
       setPage(nextPage);
+      setLoadingImg(true);
     }
   };
 
   return (
     <div className="relative">
       <div className="relative h-[300px] md:h-[500px] overflow-hidden rounded-xl">
+        {loadingImg && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-xl"></div>
+        )}
+
         <AnimatePresence initial={false} custom={page}>
           <motion.img
             key={page}
@@ -48,6 +55,7 @@ export const ImagesContent = ({ selectActivitie }: IImageContent) => {
             initial="enter"
             animate="center"
             exit="exit"
+            onLoad={() => setLoadingImg(false)}
             transition={{
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 },
@@ -78,7 +86,7 @@ export const ImagesContent = ({ selectActivitie }: IImageContent) => {
                 disabled={!canGoNext}
                 className={`p-2 rounded-full shadow transition ${
                   canGoNext
-                    ? "bg-white/80 hover:bg-white cursor-pointer "
+                    ? "bg-white/80 hover:bg-white cursor-pointer"
                     : "bg-gray-200 cursor-not-allowed"
                 }`}
               >

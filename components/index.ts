@@ -6,4 +6,5 @@ export { Activities } from "./layout";
 export { Trade } from "./Trade";
 export { Contact } from "./Contact";
 export { PageLoader } from "./PageLoader";
+export { AnimationPage } from "./AnimationPage";
 export * from "./ui";

@@ -7,7 +7,7 @@ export const FooterSocialMedia = () => {
       <Link href="/">
         <img src="/logo-zaragoza.webp" alt="logo" width={150} height={150} />
       </Link>
-      <hr className="w-full md:w-70 border-gray-300" />
+      <div className="h-[1px] w-full md:w-70 bg-gradient-to-r from-white via-neutral-200 to-white" />
       <SocialMedia colorText="text-gray-700" />
     </div>
   );

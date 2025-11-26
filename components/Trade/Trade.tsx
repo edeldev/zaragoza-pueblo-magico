@@ -16,7 +16,11 @@ export const Trade = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-5 gap-5">
         {SLUG_BUSINESS.map((busines) => (
-          <BusinessByCommerce key={busines.id} slug={busines.slug} />
+          <BusinessByCommerce
+            key={busines.id}
+            slug={busines.slug}
+            home={true}
+          />
         ))}
       </div>
       <Button
