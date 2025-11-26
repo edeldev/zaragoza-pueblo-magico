@@ -11,7 +11,7 @@ export const ModalVideo = ({ isModalOpen, closeModal }: IModalVideo) => {
     <AnimatePresence>
       {isModalOpen && (
         <motion.div
-          className="fixed inset-0 bg-gradient-to-br from-[#0a0a1a] via-[#0b0b22] to-black flex items-center justify-center z-99 overflow-hidden"
+          className="fixed inset-0 bg-gradient-to-br from-[#0a0a1a] via-[#0b0b22] to-black flex items-center justify-center z-100 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
