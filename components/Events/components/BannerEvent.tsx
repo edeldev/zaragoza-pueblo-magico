@@ -1,4 +1,6 @@
-export const BannerEvent = () => {
+import { IBannerEvent } from "./types";
+
+export const BannerEvent = ({ isPast }: IBannerEvent) => {
   return (
     <>
       <div className="md:hidden relative h-40 md:h-[300px] flex items-center justify-center">
@@ -9,13 +11,15 @@ export const BannerEvent = () => {
         />
 
         <h2 className="relative text-3xl font-bold z-10 text-white text-center px-4">
-          Próximos eventos
+          {isPast ? "Eventos pasados" : "Próximos eventos"}
         </h2>
       </div>
 
       <section className="hidden md:grid grid-cols-12 bg-event-bg">
         <div className="col-span-5 flex justify-center items-center">
-          <h2 className="text-4xl font-bold">Próximos eventos</h2>
+          <h2 className="text-4xl font-bold">
+            {isPast ? "Eventos pasados" : "Próximos eventos"}
+          </h2>
         </div>
         <div className="col-span-2" />
 
