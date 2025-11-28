@@ -2,10 +2,13 @@
 
 @theme {
   --color-primary: #b9026d;
+  --color-secondary: #e00384;
   --color-explore-background: #fefcef;
   --color-explore-text: #8b6000;
   --color-footer: #ececec;
   --color-text-orange: #fea33d;
+  --color-event-bg: #fefcef;
+  --color-text-date: #737373;
   --breakpoint-xs: 470px;
 }
 
