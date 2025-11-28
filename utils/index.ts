@@ -8,3 +8,4 @@ export { TABS_GOVERNMENT } from "./tabsGovernment";
 export { COUNCIL_MEMBERS } from "./councilMembers";
 export { DEPENDENCIES } from "./dependencies";
 export { BUSINESS } from "./business";
+export { formatDate } from "./formatDate";

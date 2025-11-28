@@ -1,5 +1,6 @@
 import { IActivities } from "@/interface/activities";
 import { TBusines } from "@/interface/business";
+import { TEvent } from "@/interface/event";
 
 export type TGetCategory = {
   categoryId: string;
@@ -28,6 +29,16 @@ export type TGetBusinessesBySubcategoryHome = {
 
 export type TGetBusinessesBySubcategoryResponse = {
   business: TBusines[];
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
+};
+
+export type TGetEventResponse = {
+  events: TEvent[];
   pagination: {
     page: number;
     pageSize: number;

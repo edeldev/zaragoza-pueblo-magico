@@ -7,3 +7,4 @@ export { SocialShareButtons } from "./SocialSharedButtons";
 export { SocialMedia } from "./SocialMedia";
 export { TabsAnimated } from "./TabsAnimated";
 export { BusinessByCommerce } from "./BusinessByCommerce";
+export { SvgLoader } from "./SVGLoader";
