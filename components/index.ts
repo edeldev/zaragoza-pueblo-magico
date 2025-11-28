@@ -8,4 +8,5 @@ export { Contact } from "./Contact";
 export { PageLoader } from "./PageLoader";
 export { AnimationPage } from "./AnimationPage";
 export { Events } from "./Events";
+export { Pagination } from "./Pagination";
 export * from "./ui";
