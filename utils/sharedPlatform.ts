@@ -24,10 +24,10 @@ export const SHARED_PLATFORM: TSharedPlatform[] = [
   },
   {
     name: "X",
-    url: (title?: string) =>
+    url: () =>
       `https://twitter.com/intent/tweet?url=${encodeURIComponent(
         window.location.href
-      )}&text=${encodeURIComponent(`Visita ${title ?? "este lugar"}`)}`,
+      )}`,
     color: "#000000",
     Icon: IconBrandX,
   },

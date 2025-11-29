@@ -19,7 +19,7 @@ export const EventMainItem = ({ event }: IEvent) => {
         />
       </Link>
 
-      <span className="text-text-date text-sm font-medium">
+      <span className="text-text-date text-xs font-medium tracking-wide uppercase">
         {formatDate(event.date)}
       </span>
 
