@@ -1,3 +1,4 @@
+"use client";
 import { IPagination } from "./types";
 import { motion } from "framer-motion";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";

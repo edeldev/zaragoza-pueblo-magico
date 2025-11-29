@@ -1,3 +1,4 @@
+"use client";
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { IButtonEvent } from "./types";
