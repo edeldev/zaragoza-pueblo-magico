@@ -20,7 +20,7 @@ export const EventSmallItem = ({ event }: IEvent) => {
       </Link>
 
       <div className="flex flex-col gap-1">
-        <span className="text-text-date text-sm font-medium">
+        <span className="text-text-date text-xs font-medium tracking-wide uppercase">
           {formatDate(event.date)}
         </span>
 
