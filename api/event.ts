@@ -3,10 +3,10 @@ import { query } from "./strapi";
 import { TGetEventResponse } from "./types";
 import { ENV } from "@/utils";
 
-export function getEvents(): Promise<TGetEventResponse> {
+export function getEvents(page = 1, pageSize = 4): Promise<TGetEventResponse> {
   const today = new Date().toISOString().split("T")[0];
 
-  const url = `events?populate=image&filters[date][$gte]=${today}&pagination[limit]=4&sort=date:asc`;
+  const url = `events?populate=image&filters[date][$gte]=${today}&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=date:asc`;
 
   return query(url).then((res) => {
     const { data, meta } = res;
@@ -17,26 +17,20 @@ export function getEvents(): Promise<TGetEventResponse> {
 
       const imageUrl = `${ENV.SERVER_HOST}${image.url}`;
 
-      return {
-        title,
-        slug,
-        resume,
-        content,
-        date,
-        time,
-        location,
-        imageUrl,
-      };
+      return { title, slug, resume, content, date, time, location, imageUrl };
     });
 
     return { events, pagination: meta?.pagination };
   });
 }
 
-export function getPastEvents(): Promise<TGetEventResponse> {
+export function getPastEvents(
+  page = 1,
+  pageSize = 4
+): Promise<TGetEventResponse> {
   const today = new Date().toISOString().split("T")[0];
 
-  const url = `events?populate=image&filters[date][$lt]=${today}&pagination[limit]=4&sort=date:asc`;
+  const url = `events?populate=image&filters[date][$lt]=${today}&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=date:asc`;
 
   return query(url).then((res) => {
     const { data, meta } = res;
@@ -47,16 +41,7 @@ export function getPastEvents(): Promise<TGetEventResponse> {
 
       const imageUrl = `${ENV.SERVER_HOST}${image.url}`;
 
-      return {
-        title,
-        slug,
-        resume,
-        content,
-        date,
-        time,
-        location,
-        imageUrl,
-      };
+      return { title, slug, resume, content, date, time, location, imageUrl };
     });
 
     return { events, pagination: meta?.pagination };

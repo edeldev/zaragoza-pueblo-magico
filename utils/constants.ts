@@ -6,4 +6,5 @@ export const ENV = {
     LAT: 23.9654,
     LON: -99.7707,
   },
+  PAGE_SIZE: 4,
 };
