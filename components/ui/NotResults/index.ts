@@ -1,0 +1,1 @@
+export { NotResults } from "./NotResults";

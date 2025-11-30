@@ -5,7 +5,7 @@ import { ENV } from "@/utils";
 import { TSlug } from "@/interface/slug";
 
 export function getEvents(page = 1, pageSize = 4): Promise<TGetEventResponse> {
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toLocaleDateString("en-CA");
 
   const url = `events?populate=image&filters[date][$gte]=${today}&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=date:asc`;
 
@@ -28,7 +28,7 @@ export function getPastEvents(
   page = 1,
   pageSize = 4
 ): Promise<TGetEventResponse> {
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toLocaleDateString("en-CA");
 
   const url = `events?populate=image&filters[date][$lt]=${today}&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=date:asc`;
 

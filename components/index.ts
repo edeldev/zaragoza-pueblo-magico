@@ -8,5 +8,6 @@ export { Contact } from "./Contact";
 export { PageLoader } from "./PageLoader";
 export { AnimationPage } from "./AnimationPage";
 export { Events } from "./Events";
+export { News } from "./News";
 export { Pagination } from "./Pagination";
 export * from "./ui";
