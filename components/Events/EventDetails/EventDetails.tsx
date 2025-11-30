@@ -1,10 +1,13 @@
 "use client";
+import { useState } from "react";
 import { SocialShareButtons } from "@/components/ui";
 import { Breadcrumbs, Details, MoreEvents } from "./components";
 import { IEventDetail } from "./components/types";
 import { BlocksContent, BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 export const EventDetails = ({ eventId }: IEventDetail) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <section className="container mx-auto px-4">
       <div className="space-y-10 max-w-4xl mx-auto">
@@ -19,10 +22,17 @@ export const EventDetails = ({ eventId }: IEventDetail) => {
         </div>
 
         <div className="relative rounded-2xl overflow-hidden shadow-lg">
+          {!isLoaded && (
+            <div className="w-full h-90 md:h-[500px] bg-neutral-200 animate-pulse absolute inset-0" />
+          )}
+
           <img
             src={eventId.imageUrl}
             alt={eventId.title}
-            className="w-full h-90 md:h-[500px] object-cover transition-all duration-700 hover:scale-[1.04]"
+            className={`w-full h-90 md:h-[500px] object-cover transition-all duration-700 hover:scale-[1.04] ${
+              isLoaded ? "opacity-100" : "opacity-0"
+            }`}
+            onLoad={() => setIsLoaded(true)}
           />
         </div>
 

@@ -1,0 +1,99 @@
+"use client";
+import { useEffect, useState, useCallback } from "react";
+import { BannerNew, NewList, ButtonNew } from "./components";
+import { AnimatePresence, motion } from "framer-motion";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { Pagination } from "../Pagination";
+import { TPagination } from "@/interface/pagination";
+import { ENV } from "@/utils";
+import { getNews, getPastNews } from "@/api/news";
+import { TNew } from "@/interface/news";
+
+export const News = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const initialPage = Number(searchParams.get("page") ?? 1);
+
+  const [news, setNews] = useState<TNew[]>([]);
+  const [pagination, setPagination] = useState<TPagination | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [showPast, setShowPast] = useState(false);
+  const [page, setPage] = useState(initialPage);
+
+  const updateURL = (newPage: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", String(newPage));
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const fetchData = useCallback(
+    async (past: boolean, currentPage = 1) => {
+      setLoading(true);
+      try {
+        const res = past
+          ? await getPastNews(currentPage, ENV.PAGE_SIZE)
+          : await getNews(currentPage, ENV.PAGE_SIZE);
+
+        setNews(res.news ?? []);
+        setPagination(res.pagination ?? null);
+      } catch {
+        setNews([]);
+        setPagination(null);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [ENV.PAGE_SIZE]
+  );
+
+  useEffect(() => {
+    fetchData(showPast, page);
+  }, [fetchData, showPast, page]);
+
+  const handleToggleEvents = () => {
+    const nextState = !showPast;
+
+    setPage(1);
+
+    router.push(pathname, { scroll: false });
+
+    setShowPast(nextState);
+
+    fetchData(nextState, 1);
+  };
+
+  return (
+    <section>
+      <BannerNew isPast={showPast} />
+
+      <div className="bg-white">
+        <div className="container mx-auto px-5 lg:px-0 py-10">
+          <ButtonNew onClick={handleToggleEvents} isPast={showPast} />
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={loading ? "loader" : `news-${page}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              <NewList newList={news} loading={loading} />
+            </motion.div>
+          </AnimatePresence>
+
+          {pagination && pagination.pageCount > 1 && (
+            <Pagination
+              page={page}
+              pagination={pagination}
+              setPage={setPage}
+              updateURL={updateURL}
+            />
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
