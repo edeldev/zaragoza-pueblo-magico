@@ -1,3 +1,5 @@
+import { BlocksContent } from "@strapi/blocks-react-renderer";
+
 export type TExploreZaragoza = {
   id: number;
   icon: string;
@@ -66,4 +68,15 @@ export type TDependencie = {
 export type TBusines = {
   id: string;
   label: string;
+};
+
+export type TAdaptedContent = {
+  slug: string;
+  title: string;
+  date: string | null;
+  imageUrl: string;
+  resume: BlocksContent;
+  href: string;
+  cta: string;
+  sectionTitle: string;
 };

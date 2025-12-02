@@ -10,4 +10,5 @@ export { AnimationPage } from "./AnimationPage";
 export { Events } from "./Events";
 export { News } from "./News";
 export { Pagination } from "./Pagination";
+export { MoreContent } from "./MoreContent";
 export * from "./ui";

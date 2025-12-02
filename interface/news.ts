@@ -9,6 +9,18 @@ export type TNew = {
   slug: string;
   resume: BlocksContent;
   content: BlocksContent;
+  contentTwo: BlocksContent;
+  date: string;
+  images: RawImage[];
+  imageUrl: string;
+  video: string;
+};
+export type TNewDetail = {
+  title: string;
+  slug: string;
+  resume: BlocksContent;
+  content: BlocksContent;
+  contentTwo: BlocksContent;
   date: string;
   images: RawImage[];
   imageUrl: string[];

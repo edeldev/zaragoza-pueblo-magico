@@ -42,7 +42,7 @@ export const ModalActivitie = ({
                     content={selectActivitie.description as BlocksContent}
                     blocks={{
                       paragraph: ({ children }) => (
-                        <p className="text-secondary">{children}</p>
+                        <p className="text-text-date">{children}</p>
                       ),
                     }}
                   />
