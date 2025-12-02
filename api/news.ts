@@ -53,13 +53,13 @@ export function getNewId({ slug }: TSlug) {
     const { data, meta } = res;
 
     const newId = data.map((n: TNew) => {
-      const { title, slug, content, date, images } = n;
+      const { title, slug, content, contentTwo, date, images, video } = n;
 
       const imageUrl = images.map(
         (img: RawImage) => `${ENV.SERVER_HOST}${img.url}`
       );
 
-      return { title, slug, content, date, imageUrl };
+      return { title, slug, content, contentTwo, date, imageUrl, video };
     });
 
     return { newId, pagination: meta?.pagination };

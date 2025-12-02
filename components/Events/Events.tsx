@@ -28,25 +28,22 @@ export const Events = () => {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const fetchData = useCallback(
-    async (past: boolean, currentPage = 1) => {
-      setLoading(true);
-      try {
-        const res = past
-          ? await getPastEvents(currentPage, ENV.PAGE_SIZE)
-          : await getEvents(currentPage, ENV.PAGE_SIZE);
+  const fetchData = useCallback(async (past: boolean, currentPage = 1) => {
+    setLoading(true);
+    try {
+      const res = past
+        ? await getPastEvents(currentPage, ENV.PAGE_SIZE)
+        : await getEvents(currentPage, ENV.PAGE_SIZE);
 
-        setEvents(res.events ?? []);
-        setPagination(res.pagination ?? null);
-      } catch {
-        setEvents([]);
-        setPagination(null);
-      } finally {
-        setLoading(false);
-      }
-    },
-    [ENV.PAGE_SIZE]
-  );
+      setEvents(res.events ?? []);
+      setPagination(res.pagination ?? null);
+    } catch {
+      setEvents([]);
+      setPagination(null);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     fetchData(showPast, page);

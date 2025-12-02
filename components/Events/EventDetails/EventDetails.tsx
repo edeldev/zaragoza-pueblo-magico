@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
-import { SocialShareButtons } from "@/components/ui";
-import { Breadcrumbs, Details, MoreEvents } from "./components";
+import { Breadcrumbs, SocialShareButtons } from "@/components/ui";
+import { Details } from "./components";
 import { IEventDetail } from "./components/types";
 import { BlocksContent, BlocksRenderer } from "@strapi/blocks-react-renderer";
+import { MoreContent } from "@/components/MoreContent";
 
 export const EventDetails = ({ eventId }: IEventDetail) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -11,7 +12,7 @@ export const EventDetails = ({ eventId }: IEventDetail) => {
   return (
     <section className="container mx-auto px-4">
       <div className="space-y-10 max-w-4xl mx-auto">
-        <Breadcrumbs eventId={eventId} />
+        <Breadcrumbs text="eventos" breadcrumb={eventId} />
         <Details eventId={eventId} />
 
         <div className="pt-4 border-t border-neutral-200">
@@ -51,7 +52,7 @@ export const EventDetails = ({ eventId }: IEventDetail) => {
           <div className="h-[1.2px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent" />
         </div>
 
-        <MoreEvents />
+        <MoreContent type="events" />
       </div>
     </section>
   );
