@@ -1,4 +1,5 @@
 "use client";
+import { JSX } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IconX } from "@tabler/icons-react";
 import { Container } from "@/components/ui";
@@ -41,8 +42,37 @@ export const ModalActivitie = ({
                   <BlocksRenderer
                     content={selectActivitie.description as BlocksContent}
                     blocks={{
+                      heading: ({ children, level }) => {
+                        const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+
+                        const styles: Record<number, string> = {
+                          2: "text-2xl md:text-3xl font-bold text-black",
+                          3: "text-xl md:text-2xl font-semibold text-black",
+                        };
+
+                        return (
+                          <Tag
+                            className={
+                              styles[level] || "text-3xl font-bold text-black"
+                            }
+                          >
+                            {children}
+                          </Tag>
+                        );
+                      },
+
                       paragraph: ({ children }) => (
                         <p className="text-text-date">{children}</p>
+                      ),
+
+                      list: ({ children }) => (
+                        <ul className="list-disc pl-3 my-4 text-text-date">
+                          {children}
+                        </ul>
+                      ),
+
+                      "list-item": ({ children }) => (
+                        <li className="mb-1">{children}</li>
                       ),
                     }}
                   />
