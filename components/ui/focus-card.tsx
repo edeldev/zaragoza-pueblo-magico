@@ -17,39 +17,49 @@ export const Card = React.memo(
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
     open: (card: IActivities) => void;
-  }) => (
-    <div
-      onMouseEnter={() => setHovered(index)}
-      onMouseLeave={() => setHovered(null)}
-      onClick={() => open(card)}
-      className={cn(
-        "cursor-pointer rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-70 w-full transition-all duration-300 ease-out group",
-        hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
-      )}
-    >
-      <img
-        src={card.images[0]}
-        alt={card.name}
-        className="object-cover absolute inset-0 w-full h-full"
-      />
+  }) => {
+    const [loading, setLoading] = useState(true);
 
+    return (
       <div
+        onMouseEnter={() => setHovered(index)}
+        onMouseLeave={() => setHovered(null)}
+        onClick={() => open(card)}
         className={cn(
-          "absolute inset-0 flex items-end py-8 px-4 transition-opacity duration-300",
-
-          "opacity-100",
-
-          "lg:opacity-0 lg:group-hover:opacity-100 lg:bg-black/50"
+          "cursor-pointer rounded-lg relative bg-gray-100 overflow-hidden h-60 md:h-70 w-full transition-all duration-300 ease-out group",
+          hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
         )}
       >
-        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/60 to-transparent lg:hidden"></div>
+        {loading && (
+          <div className="absolute inset-0 w-full h-full animate-pulse bg-gray-300" />
+        )}
 
-        <div className="relative z-10 capitalize text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
-          {card.name}
+        <img
+          src={card.images[0]}
+          alt={card.name}
+          className={cn(
+            "object-cover absolute inset-0 w-full h-full transition-opacity duration-300",
+            loading ? "opacity-0" : "opacity-100"
+          )}
+          onLoad={() => setLoading(false)}
+        />
+
+        <div
+          className={cn(
+            "absolute inset-0 flex items-end py-8 px-4 transition-opacity duration-300",
+            "opacity-100",
+            "lg:opacity-0 lg:group-hover:opacity-100 lg:bg-black/50"
+          )}
+        >
+          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/60 to-transparent lg:hidden"></div>
+
+          <div className="relative z-10 capitalize text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
+            {card.name}
+          </div>
         </div>
       </div>
-    </div>
-  )
+    );
+  }
 );
 
 Card.displayName = "Card";

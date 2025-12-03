@@ -1,4 +1,4 @@
-import { ENV } from "@/utils";
+import { ENV, optimizeCloudinary } from "@/utils";
 import { query } from "./strapi";
 import {
   TGetBusinessesBySubcategory,
@@ -33,9 +33,15 @@ export function getCategory({
         ubication,
         locationHref,
       } = activitie;
-      const images = rawImages.map(
-        (img: RawImage) => `${ENV.SERVER_HOST}${img.url}`
-      );
+      const images = rawImages.map((img: RawImage) => {
+        if (!img?.url) return "";
+
+        const url = img.url.startsWith("http")
+          ? img.url
+          : `${ENV.SERVER_HOST}${img.url}`;
+
+        return optimizeCloudinary(url, 750);
+      });
 
       return {
         name,

@@ -10,3 +10,4 @@ export { DEPENDENCIES } from "./dependencies";
 export { BUSINESS } from "./business";
 export { formatDate } from "./formatDate";
 export { adaptContent } from "./contentAdapter";
+export { optimizeCloudinary } from "./cloudinary";
