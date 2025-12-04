@@ -32,6 +32,9 @@ export function getCategory({
         images: rawImages,
         ubication,
         locationHref,
+        webSite,
+        facebook,
+        instagram,
       } = activitie;
       const images = rawImages.map((img: RawImage) => {
         if (!img?.url) return "";
@@ -51,6 +54,9 @@ export function getCategory({
         images,
         ubication,
         locationHref,
+        webSite,
+        facebook,
+        instagram,
       };
     });
 

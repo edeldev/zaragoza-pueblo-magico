@@ -1,11 +1,12 @@
 "use client";
 import { JSX } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconX } from "@tabler/icons-react";
+import { IconWorld, IconX } from "@tabler/icons-react";
 import { Container } from "@/components/ui";
 import { BlocksContent, BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { IModalActivitie } from "./types";
 import { Banner, ImagesContent } from "./components";
+import Link from "next/link";
 
 export const ModalActivitie = ({
   selectActivitie,
@@ -39,6 +40,27 @@ export const ModalActivitie = ({
             <Container>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-3">
+                  {selectActivitie.webSite && (
+                    <>
+                      <div className="flex gap-3 items-center">
+                        <Link
+                          href={selectActivitie.webSite}
+                          className="bg-primary p-2 rounded-full hover:bg-primary/80 transition-colors duration-300"
+                        >
+                          <IconWorld className="text-white" stroke={1.5} />
+                        </Link>
+                        <Link
+                          href={selectActivitie.webSite}
+                          className="text-text-date hover:text-text-date/60 transition-colors duration-300"
+                        >
+                          Visita su sitio web
+                        </Link>
+                      </div>
+                      <div className="my-6 max-w-2xl mx-auto opacity-70">
+                        <div className="h-[1.2px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent" />
+                      </div>
+                    </>
+                  )}
                   <BlocksRenderer
                     content={selectActivitie.description as BlocksContent}
                     blocks={{
@@ -47,7 +69,7 @@ export const ModalActivitie = ({
 
                         const styles: Record<number, string> = {
                           2: "text-2xl md:text-3xl font-bold text-black",
-                          3: "text-xl md:text-2xl font-semibold text-black",
+                          3: "text-lg md:text-xl font-semibold text-gray-800",
                         };
 
                         return (
@@ -66,14 +88,11 @@ export const ModalActivitie = ({
                       ),
 
                       list: ({ children }) => (
-                        <ul className="list-disc pl-3 my-4 text-text-date">
+                        <ul className="list-disc pl-3 my-2 text-text-date">
                           {children}
                         </ul>
                       ),
-
-                      "list-item": ({ children }) => (
-                        <li className="mb-1">{children}</li>
-                      ),
+                      "list-item": ({ children }) => <li>{children}</li>,
                     }}
                   />
                 </div>

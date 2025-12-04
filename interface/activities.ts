@@ -12,6 +12,9 @@ export interface IActivities {
   images: string[];
   ubication: string;
   locationHref: string;
+  webSite?: string;
+  facebook?: string;
+  instagram?: string;
 }
 
 export type TActivities = {
@@ -22,4 +25,7 @@ export type TActivities = {
   images: RawImage[];
   ubication: string;
   locationHref: string;
+  webSite?: string;
+  facebook?: string;
+  instagram?: string;
 };

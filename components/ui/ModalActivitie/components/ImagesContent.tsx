@@ -4,7 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { IImageContent } from "./types";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import {
+  IconBrandFacebookFilled,
+  IconBrandInstagram,
+  IconChevronLeft,
+  IconChevronRight,
+} from "@tabler/icons-react";
 
 const variants = {
   enter: (direction: number) => ({
@@ -123,6 +128,36 @@ export const ImagesContent = ({ selectActivitie }: IImageContent) => {
             Ver en el mapa
           </Link>
         </div>
+
+        {(selectActivitie.facebook || selectActivitie.instagram) && (
+          <div>
+            <div className="mt-10 mb-6 max-w-2xl mx-auto opacity-70">
+              <div className="h-[1.2px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent" />
+            </div>
+
+            <span>Redes sociales</span>
+
+            <div className="flex gap-3 mt-3">
+              {selectActivitie.facebook && (
+                <Link
+                  href={selectActivitie.facebook}
+                  className="border border-[#1877F2] hover:bg-[#1877F2] p-2 rounded-full transition-colors duration-300 group"
+                >
+                  <IconBrandFacebookFilled className="text-black group-hover:text-white" />
+                </Link>
+              )}
+
+              {selectActivitie.instagram && (
+                <Link
+                  href={selectActivitie.instagram}
+                  className="border border-[#E4405F] hover:bg-[#E4405F] p-2 rounded-full transition-colors duration-300 group"
+                >
+                  <IconBrandInstagram className="text-black group-hover:text-white" />
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
