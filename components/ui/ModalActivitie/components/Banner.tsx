@@ -2,6 +2,8 @@ import { SocialShareButtons } from "../../SocialSharedButtons";
 import { IBanner } from "./types";
 
 export const Banner = ({ selectActivitie }: IBanner) => {
+  const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/?turismo=${selectActivitie.slug}`;
+
   return (
     <div className="relative h-[400px] lg:h-[300px] overflow-hidden">
       <img
@@ -27,7 +29,7 @@ export const Banner = ({ selectActivitie }: IBanner) => {
           <hr />
 
           <p>{selectActivitie.resume}</p>
-          <SocialShareButtons title={selectActivitie.name} />
+          <SocialShareButtons shareUrl={shareUrl} />
         </div>
       </div>
     </div>

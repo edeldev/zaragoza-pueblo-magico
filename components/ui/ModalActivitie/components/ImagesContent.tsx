@@ -118,7 +118,7 @@ export const ImagesContent = ({ selectActivitie }: IImageContent) => {
       <div className="space-y-1 mt-6">
         <p className="text-lg font-semibold">Ubicación</p>
         <span>{selectActivitie.ubication}</span>
-        <div className="flex justify-end mt-2">
+        <div className="flex justify-end mt-6">
           <Link
             href={selectActivitie.locationHref}
             target="_blank"

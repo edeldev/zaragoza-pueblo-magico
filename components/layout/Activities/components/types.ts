@@ -6,4 +6,5 @@ export interface IActivitie {
   categoryId: string;
   link: string;
   openActivitie: (activitie: IActivities) => void;
+  onLoadedActivities: (activities: IActivities[]) => void;
 }

@@ -8,6 +8,7 @@ import { MoreContent } from "@/components/MoreContent";
 
 export const EventDetails = ({ eventId }: IEventDetail) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/eventos/${eventId.slug}`;
 
   return (
     <section className="container mx-auto px-4">
@@ -19,7 +20,7 @@ export const EventDetails = ({ eventId }: IEventDetail) => {
           <p className="text-sm font-medium text-neutral-600 uppercase tracking-wide">
             Compartir:
           </p>
-          <SocialShareButtons title={eventId.title} />
+          <SocialShareButtons shareUrl={shareUrl} />
         </div>
 
         <div className="relative rounded-2xl overflow-hidden shadow-lg">

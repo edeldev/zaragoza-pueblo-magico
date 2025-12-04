@@ -2,6 +2,12 @@ import { AnimationPage, TabsAnimated } from "@/components";
 import { Council, Dependencies, Mayoress } from "@/components/Government";
 import { TABS_GOVERNMENT } from "@/utils";
 
+export const metadata = {
+  title: "Gobierno Municipal de General Zaragoza, Nuevo León",
+  description:
+    "Conoce a la alcaldesa, el cabildo y las dependencias del Gobierno Municipal de General Zaragoza, Nuevo León. Administración 2024 - 2027.",
+};
+
 const tabContent: Record<string, React.ReactNode> = {
   Alcaldesa: <Mayoress />,
   Cabildo: <Council />,

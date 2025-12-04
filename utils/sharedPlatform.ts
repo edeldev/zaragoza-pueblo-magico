@@ -8,26 +8,24 @@ import {
 export const SHARED_PLATFORM: TSharedPlatform[] = [
   {
     name: "Facebook",
-    url: () =>
+    url: (shareUrl: string) =>
       `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        window.location.href
+        shareUrl
       )}`,
     color: "#1877f2",
     Icon: IconBrandFacebook,
   },
   {
     name: "WhatsApp",
-    url: () =>
-      `https://wa.me/?text=${encodeURIComponent(window.location.href)}`,
+    url: (shareUrl: string) =>
+      `https://wa.me/?text=${encodeURIComponent(shareUrl)}`,
     color: "#25D366",
     Icon: IconBrandWhatsapp,
   },
   {
     name: "X",
-    url: () =>
-      `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-        window.location.href
-      )}`,
+    url: (shareUrl: string) =>
+      `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}`,
     color: "#000000",
     Icon: IconBrandX,
   },

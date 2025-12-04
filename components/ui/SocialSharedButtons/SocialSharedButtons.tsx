@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { SHARED_PLATFORM } from "@/utils/sharedPlatform";
 import { ISocialShareButton } from "./types";
 
-export const SocialShareButtons = ({ title }: ISocialShareButton) => {
+export const SocialShareButtons = ({ shareUrl }: ISocialShareButton) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -12,7 +12,7 @@ export const SocialShareButtons = ({ title }: ISocialShareButton) => {
 
   const handleShare = (name: string) => {
     const platform = SHARED_PLATFORM.find((p) => p.name === name);
-    const url = platform?.url(title);
+    const url = platform?.url(shareUrl);
     if (url) window.open(url, "_blank");
   };
 

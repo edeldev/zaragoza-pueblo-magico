@@ -88,7 +88,7 @@ export const ModalActivitie = ({
                       ),
 
                       list: ({ children }) => (
-                        <ul className="list-disc pl-3 my-2 text-text-date">
+                        <ul className="list-disc pl-3 space-y-3 text-text-date">
                           {children}
                         </ul>
                       ),

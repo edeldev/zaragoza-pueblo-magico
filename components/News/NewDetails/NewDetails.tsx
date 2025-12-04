@@ -4,6 +4,8 @@ import { Details } from "./components";
 import { MoreContent } from "@/components/MoreContent";
 
 export const NewDetails = ({ newId }: INewDetail) => {
+  const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/noticias/${newId.slug}`;
+
   return (
     <section className="container mx-auto px-4">
       <div className="space-y-10 max-w-4xl mx-auto">
@@ -15,7 +17,7 @@ export const NewDetails = ({ newId }: INewDetail) => {
           <p className="text-sm font-medium text-neutral-600 uppercase tracking-wide">
             Compartir:
           </p>
-          <SocialShareButtons title={newId.title} />
+          <SocialShareButtons shareUrl={shareUrl} />
         </div>
         <Details newId={newId} />
         <div className="my-16 max-w-2xl mx-auto opacity-70">

@@ -1,7 +1,7 @@
 import { TEvent } from "@/interface/event";
 import { query } from "./strapi";
 import { TGetEventResponse } from "./types";
-import { ENV } from "@/utils";
+import { resolveImageUrl } from "@/utils";
 import { TSlug } from "@/interface/slug";
 
 export function getEvents(page = 1, pageSize = 4): Promise<TGetEventResponse> {
@@ -15,9 +15,13 @@ export function getEvents(page = 1, pageSize = 4): Promise<TGetEventResponse> {
     const events = data.map((event: TEvent) => {
       const { title, slug, resume, date, image } = event;
 
-      const imageUrl = `${ENV.SERVER_HOST}${image.url}`;
-
-      return { title, slug, resume, date, imageUrl };
+      return {
+        title,
+        slug,
+        resume,
+        date,
+        imageUrl: resolveImageUrl(image?.url),
+      };
     });
 
     return { events, pagination: meta?.pagination };
@@ -38,9 +42,13 @@ export function getPastEvents(
     const events = data.map((event: TEvent) => {
       const { title, slug, resume, date, image } = event;
 
-      const imageUrl = `${ENV.SERVER_HOST}${image.url}`;
-
-      return { title, slug, resume, date, imageUrl };
+      return {
+        title,
+        slug,
+        resume,
+        date,
+        imageUrl: resolveImageUrl(image?.url),
+      };
     });
 
     return { events, pagination: meta?.pagination };
@@ -55,9 +63,15 @@ export function getEventId({ slug }: TSlug) {
       const eventId = data.map((event: TEvent) => {
         const { title, slug, content, date, time, location, image } = event;
 
-        const imageUrl = `${ENV.SERVER_HOST}${image.url}`;
-
-        return { title, slug, content, date, time, location, imageUrl };
+        return {
+          title,
+          slug,
+          content,
+          date,
+          time,
+          location,
+          imageUrl: resolveImageUrl(image?.url),
+        };
       });
 
       return { eventId, pagination: meta?.pagination };
