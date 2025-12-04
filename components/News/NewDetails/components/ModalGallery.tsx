@@ -27,6 +27,8 @@ export const ModalGallery = ({
         const nextIndex =
           currentIndex === galleryImages.length - 1 ? 0 : currentIndex + 1;
 
+        const disableArrows = galleryImages.length <= 1;
+
         return (
           <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center px-4">
             <div className="w-full h-120 md:h-150 flex items-center justify-center relative">
@@ -54,30 +56,44 @@ export const ModalGallery = ({
 
             <button
               type="button"
+              disabled={disableArrows}
               onClick={(e) => {
                 e.stopPropagation();
+                if (disableArrows) return;
                 setMainLoaded(false);
                 setActiveImage(galleryImages[prevIndex]);
               }}
-              className="absolute left-5 top-1/2 -translate-y-1/2 
-              flex items-center justify-center
-              w-12 h-12 bg-black/40 hover:bg-black/70 
-              text-white rounded-full cursor-pointer transition-all duration-300"
+              className={`absolute left-5 top-1/2 -translate-y-1/2 
+    flex items-center justify-center
+    w-12 h-12 rounded-full transition-all duration-300
+    ${
+      disableArrows
+        ? "bg-white/60 cursor-not-allowed"
+        : "bg-white/80 hover:bg-white/60 cursor-pointer"
+    }
+  `}
             >
               <IconChevronLeft size={28} />
             </button>
 
             <button
               type="button"
+              disabled={disableArrows}
               onClick={(e) => {
                 e.stopPropagation();
+                if (disableArrows) return;
                 setMainLoaded(false);
                 setActiveImage(galleryImages[nextIndex]);
               }}
-              className="absolute right-5 top-1/2 -translate-y-1/2 
-              flex items-center justify-center
-              w-12 h-12 bg-black/40 hover:bg-black/70 
-              text-white rounded-full cursor-pointer transition-all duration-300"
+              className={`absolute right-5 top-1/2 -translate-y-1/2 
+    flex items-center justify-center
+    w-12 h-12 rounded-full transition-all duration-300
+    ${
+      disableArrows
+        ? "bg-white/60 cursor-not-allowed"
+        : "bg-white/80 hover:bg-white/60 cursor-pointer"
+    }
+  `}
             >
               <IconChevronRight size={28} />
             </button>
@@ -93,14 +109,17 @@ export const ModalGallery = ({
 
                       <img
                         src={img}
-                        className={`h-20 w-32 object-cover rounded-lg cursor-pointer transition-all ${
-                          current === img
-                            ? "ring-2 ring-white scale-105"
-                            : "opacity-80 hover:opacity-100"
-                        } ${thumbLoaded ? "opacity-100" : "opacity-0"}`}
+                        className={`h-20 w-32 object-cover rounded-lg transition-all
+    ${disableArrows ? "cursor-not-allowed opacity-50" : "cursor-pointer"}
+    ${
+      current === img
+        ? "ring-2 ring-white scale-105"
+        : "opacity-80 hover:opacity-100"
+    } ${thumbLoaded ? "opacity-100" : "opacity-0"}`}
                         onLoad={() => setThumbLoaded(true)}
                         onClick={(e) => {
                           e.stopPropagation();
+                          if (disableArrows) return; // 👈 bloquea click
                           setMainLoaded(false);
                           setActiveImage(img);
                         }}

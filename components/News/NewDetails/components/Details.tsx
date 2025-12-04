@@ -1,7 +1,7 @@
 "use client";
+import { JSX, useState } from "react";
 import { formatDate } from "@/utils";
 import { IDetail } from "./types";
-import { useState } from "react";
 import { BlocksContent, BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { useLockBodyScroll } from "@/hooks";
 import { ModalGallery } from "./ModalGallery";
@@ -55,8 +55,31 @@ export const Details = ({ newId }: IDetail) => {
           <BlocksRenderer
             content={content as BlocksContent}
             blocks={{
+              heading: ({ children, level }) => {
+                const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+
+                const styles: Record<number, string> = {
+                  3: "text-lg md:text-xl font-semibold text-gray-800 mb-2",
+                };
+
+                return (
+                  <Tag
+                    className={styles[level] || "text-xl font-bold text-black"}
+                  >
+                    {children}
+                  </Tag>
+                );
+              },
+
               paragraph: ({ children }) => (
                 <p className="mb-5 text-neutral-700 text-lg">{children}</p>
+              ),
+
+              list: ({ children }) => (
+                <ul className="list-disc pl-3 space-y-3">{children}</ul>
+              ),
+              "list-item": ({ children }) => (
+                <li className="text-neutral-700 text-lg">{children}</li>
               ),
             }}
           />
@@ -104,8 +127,31 @@ export const Details = ({ newId }: IDetail) => {
           <BlocksRenderer
             content={contentTwo as BlocksContent}
             blocks={{
+              heading: ({ children, level }) => {
+                const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+
+                const styles: Record<number, string> = {
+                  3: "text-lg md:text-xl font-semibold text-gray-800 mb-2",
+                };
+
+                return (
+                  <Tag
+                    className={styles[level] || "text-xl font-bold text-black"}
+                  >
+                    {children}
+                  </Tag>
+                );
+              },
+
               paragraph: ({ children }) => (
                 <p className="mb-5 text-neutral-700 text-lg">{children}</p>
+              ),
+
+              list: ({ children }) => (
+                <ul className="list-disc pl-3 space-y-3">{children}</ul>
+              ),
+              "list-item": ({ children }) => (
+                <li className="text-neutral-700 text-lg">{children}</li>
               ),
             }}
           />

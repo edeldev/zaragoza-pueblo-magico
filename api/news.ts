@@ -1,8 +1,8 @@
 import { query } from "./strapi";
 import { TGetNewResponse } from "./types";
-import { ENV } from "@/utils";
+import { resolveImageArray } from "@/utils";
 import { TSlug } from "@/interface/slug";
-import { RawImage, TNew } from "@/interface/news";
+import { TNew } from "@/interface/news";
 
 export function getNews(page = 1, pageSize = 4): Promise<TGetNewResponse> {
   const today = new Date().toLocaleDateString("en-CA");
@@ -15,9 +15,7 @@ export function getNews(page = 1, pageSize = 4): Promise<TGetNewResponse> {
     const news = data.map((n: TNew) => {
       const { title, slug, resume, date, images } = n;
 
-      const imageUrl = images.map(
-        (img: RawImage) => `${ENV.SERVER_HOST}${img.url}`
-      );
+      const imageUrl = resolveImageArray(images, 800);
 
       return { title, slug, resume, date, imageUrl };
     });
@@ -37,9 +35,7 @@ export function getPastNews(page = 1, pageSize = 4): Promise<TGetNewResponse> {
     const news = data.map((n: TNew) => {
       const { title, slug, resume, date, images } = n;
 
-      const imageUrl = images.map(
-        (img: RawImage) => `${ENV.SERVER_HOST}${img.url}`
-      );
+      const imageUrl = resolveImageArray(images, 800);
 
       return { title, slug, resume, date, imageUrl };
     });
@@ -55,9 +51,7 @@ export function getNewId({ slug }: TSlug) {
     const newId = data.map((n: TNew) => {
       const { title, slug, content, contentTwo, date, images, video } = n;
 
-      const imageUrl = images.map(
-        (img: RawImage) => `${ENV.SERVER_HOST}${img.url}`
-      );
+      const imageUrl = resolveImageArray(images, 800);
 
       return { title, slug, content, contentTwo, date, imageUrl, video };
     });

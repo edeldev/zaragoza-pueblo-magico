@@ -1,4 +1,4 @@
-import { ENV, optimizeCloudinary } from "@/utils";
+import { resolveImageArray } from "@/utils";
 import { query } from "./strapi";
 import {
   TGetBusinessesBySubcategory,
@@ -7,7 +7,7 @@ import {
   TGetCategory,
   TGetCategoryResponse,
 } from "./types";
-import { RawImage, TActivities } from "@/interface/activities";
+import { TActivities } from "@/interface/activities";
 import { TBusines } from "@/interface/business";
 
 export function getCategory({
@@ -36,15 +36,8 @@ export function getCategory({
         facebook,
         instagram,
       } = activitie;
-      const images = rawImages.map((img: RawImage) => {
-        if (!img?.url) return "";
 
-        const url = img.url.startsWith("http")
-          ? img.url
-          : `${ENV.SERVER_HOST}${img.url}`;
-
-        return optimizeCloudinary(url, 750);
-      });
+      const images = resolveImageArray(rawImages, 750);
 
       return {
         name,

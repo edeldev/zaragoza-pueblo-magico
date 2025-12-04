@@ -1,3 +1,3 @@
 export interface ISocialShareButton {
-  title: string;
+  shareUrl: string;
 }

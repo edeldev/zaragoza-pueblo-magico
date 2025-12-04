@@ -12,6 +12,7 @@ export const Activitie = ({
   categoryId,
   link,
   openActivitie,
+  onLoadedActivities,
 }: IActivitie) => {
   const [activities, setActivities] = useState<IActivities[]>([]);
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ export const Activitie = ({
     getCategory({ categoryId, limit: 4 })
       .then((res) => {
         setActivities(res.activities);
+        onLoadedActivities(res.activities);
         if (!res.activities || res.activities.length === 0) {
           setError(true);
         }
