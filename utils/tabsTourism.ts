@@ -1,5 +1,5 @@
 export const TABS_ACTIVITIES: string[] = [
   "Atractivos turísticos",
-  "Fiesta y eventos",
+  "Festividades",
   "Comercios",
 ];

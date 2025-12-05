@@ -18,7 +18,7 @@ const PageAlcaldesa = () => {
   return (
     <AnimationPage>
       <TabsAnimated
-        title="Gobierno municipal de General Zaragoza Nuevo León"
+        title="Gobierno municipal de General Zaragoza, Nuevo León"
         subtitle="Administración 2024 - 2027"
         tabs={TABS_GOVERNMENT}
         content={tabContent}

@@ -41,7 +41,7 @@ export const FOOTER_LINKS_EXPLORE: TFooterLink[] = [
   },
   {
     id: 3,
-    text: "Fiesta y eventos",
+    text: "Festividades",
     url: "/#party",
   },
   {

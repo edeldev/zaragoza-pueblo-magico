@@ -16,7 +16,7 @@ export const EXPLORE_ZARAGOZA: TExploreZaragoza[] = [
   {
     id: 3,
     icon: "IconConfettiFilled",
-    text: "Fiesta y eventos",
+    text: "Festividades",
     link: "#party",
   },
   {

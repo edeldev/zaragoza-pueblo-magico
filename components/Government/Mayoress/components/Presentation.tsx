@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import Link from "next/link";
 import { IconStar, IconSchool, IconAward, IconUser } from "@tabler/icons-react";
 
 export const Presentation = () => {
@@ -24,14 +23,7 @@ export const Presentation = () => {
           </span>
         </div>
 
-        <Link
-          href="/eventos"
-          className="inline-block bg-text-orange text-black font-semibold px-5 py-2 rounded-lg hover:bg-text-orange/80 transition-all w-fit"
-        >
-          Ver próximos eventos
-        </Link>
-
-        <div className="flex flex-col gap-4 mt-4">
+        <div className="flex flex-col gap-4 mt-16">
           <div className="flex gap-3 items-center">
             <IconStar className="text-text-orange" size={24} stroke={1.5} />
             <span>Primera mujer alcaldesa de Zaragoza</span>

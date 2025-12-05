@@ -10,9 +10,9 @@ export const ACTIVITIES: TActivities[] = [
   },
   {
     id: 2,
-    title: "Fiesta y eventos",
+    title: "Festividades",
     section: "party",
     categoryId: "party",
-    link: `/turismo?tab=${encodeURIComponent("Fiesta y eventos")}`,
+    link: `/turismo?tab=${encodeURIComponent("Festividades")}`,
   },
 ];

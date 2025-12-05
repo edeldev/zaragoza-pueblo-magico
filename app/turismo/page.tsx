@@ -10,7 +10,7 @@ export const metadata = {
 
 const tabContent: Record<string, React.ReactNode> = {
   "Atractivos turísticos": <Activities categoryId="touristAttractive" />,
-  "Fiesta y eventos": <Activities categoryId="party" />,
+  Festividades: <Activities categoryId="party" />,
   Comercios: <Trade />,
 };
 

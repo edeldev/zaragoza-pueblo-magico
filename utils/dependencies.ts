@@ -34,7 +34,7 @@ export const DEPENDENCIES: TDependencie[] = [
   {
     no: 6,
     name: "Melva Guadalupe Pérez de la Fuente",
-    department: "Cultura, Turismo y Economía",
+    department: "Cultura, Turismo y Desarrollo Económico",
     phone: "8262654895",
   },
   {
