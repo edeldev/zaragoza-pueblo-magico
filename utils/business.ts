@@ -27,7 +27,7 @@ export const BUSINESS: TBusines[] = [
   },
   {
     id: "mechanical-workshop",
-    label: "taller mecánico",
+    label: "taller automotriz",
   },
   {
     id: "gas-stations",
