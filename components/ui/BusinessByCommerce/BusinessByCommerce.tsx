@@ -18,6 +18,12 @@ import {
   IconShoppingCart,
   IconWorld,
   IconCarFan,
+  IconBrush,
+  IconTool,
+  IconGasStation,
+  IconCake,
+  IconToolsKitchen2,
+  IconSettingsCog,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { IBusinessByCommerce } from "./types";
@@ -29,6 +35,12 @@ const ICONS: Record<string, React.FC<{ stroke: number; size: number }>> = {
   IconHanger,
   IconShoppingCart,
   IconBuildingSkyscraper,
+  IconBrush,
+  IconTool,
+  IconGasStation,
+  IconCake,
+  IconToolsKitchen2,
+  IconSettingsCog,
 };
 
 export const BusinessByCommerce = ({
