@@ -20,10 +20,6 @@ export type TGetCategoryResponse = {
 
 export type TGetBusinessesBySubcategory = {
   slug: string;
-};
-
-export type TGetBusinessesBySubcategoryHome = {
-  slug: string;
   pageSize: number;
   page: number;
 };

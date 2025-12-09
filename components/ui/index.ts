@@ -13,3 +13,4 @@ export { LoaderComponent } from "./LoaderComponent";
 export { NotResults } from "./NotResults";
 export { ReadMore } from "./ReadMore";
 export { Breadcrumbs } from "./Breadcrumbs";
+export { SkeletonTrade } from "./SkeletonTrade";
