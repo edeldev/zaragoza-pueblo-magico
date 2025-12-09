@@ -1,9 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import {
-  getBusinessesBySubcategory,
-  getBusinessesBySubcategoryHome,
-} from "@/api/home";
+import { getBusinessesBySubcategory } from "@/api/home";
 import { TBusines } from "@/interface/business";
 import {
   IconBook,
@@ -17,7 +14,6 @@ import {
   IconPhone,
   IconShoppingCart,
   IconWorld,
-  IconCarFan,
   IconBrush,
   IconTool,
   IconGasStation,
@@ -27,6 +23,7 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { IBusinessByCommerce } from "./types";
+import { SkeletonTrade } from "../SkeletonTrade";
 
 const ICONS: Record<string, React.FC<{ stroke: number; size: number }>> = {
   IconPerfume,
@@ -50,23 +47,17 @@ export const BusinessByCommerce = ({
   const [business, setBusiness] = useState<TBusines[] | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const bussinesHome = home
-    ? getBusinessesBySubcategoryHome({
-        slug,
-        page: 1,
-        pageSize: 1,
-      })
-    : getBusinessesBySubcategory({ slug });
+  const bussinesFetch = home
+    ? getBusinessesBySubcategory({ slug, page: 1, pageSize: 1 })
+    : getBusinessesBySubcategory({ slug, page: 1, pageSize: 50 });
 
   useEffect(() => {
     const fetchBusiness = async () => {
       try {
-        setLoading(true);
-        const res = await bussinesHome;
+        const res = await bussinesFetch;
         setBusiness(res.business);
-      } catch (err: unknown) {
-        if (err instanceof Error) console.error(err.message);
-        else console.error(err);
+      } catch (err) {
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -75,15 +66,14 @@ export const BusinessByCommerce = ({
     fetchBusiness();
   }, [slug]);
 
-  if (loading)
-    return (
-      <div className="w-full flex justify-center py-10">
-        <IconCarFan size={35} className="animate-spin text-primary" />
-      </div>
-    );
+  if (loading) return <SkeletonTrade />;
 
   if (!business || business.length === 0)
-    return <span className="text-center">No hay resultados</span>;
+    return (
+      <div className="text-center border p-4 rounded-2xl">
+        No hay resultados
+      </div>
+    );
 
   return (
     <>
