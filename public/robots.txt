@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.generalzaragoza.mx
+
+# Sitemaps
+Sitemap: https://www.generalzaragoza.mx/sitemap.xml
