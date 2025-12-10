@@ -1,10 +1,18 @@
+"use client";
 import { Breadcrumbs, SocialShareButtons } from "@/components/ui";
 import { INewDetail } from "./types";
 import { Details } from "./components";
 import { MoreContent } from "@/components/MoreContent";
+import { useMoreContent } from "@/hooks";
+import { adaptContent } from "@/utils";
 
 export const NewDetails = ({ newId }: INewDetail) => {
   const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/noticias/${newId.slug}`;
+
+  const { items } = useMoreContent("news", 3);
+
+  const more =
+    items.length > 0 ? adaptContent(items[0], "news").sectionTitle : null;
 
   return (
     <section className="container mx-auto px-4">
@@ -20,7 +28,9 @@ export const NewDetails = ({ newId }: INewDetail) => {
           <SocialShareButtons shareUrl={shareUrl} />
         </div>
         <Details newId={newId} />
-        <div className="my-16 max-w-2xl mx-auto opacity-70">
+        <div
+          className={`${more ? "my-16" : "my-0"} max-w-2xl mx-auto opacity-70`}
+        >
           <div className="h-[1.2px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent" />
         </div>
         <MoreContent type="news" />
