@@ -59,7 +59,7 @@ export const Main = () => {
   };
 
   const renderRainDrops = () => {
-    if (weatherData?.icon === "rain") {
+    if (true) {
       return <RenderRainDrops />;
     }
 
@@ -117,7 +117,7 @@ export const Main = () => {
           ) : errorWeather ? (
             <IconCloud size={20} />
           ) : (
-            getIcon(weatherData?.icon)
+            <IconCloudRain size={20} />
           )}
           <div className="flex flex-col">
             <span className="text-sm font-bold text-start">
@@ -132,7 +132,7 @@ export const Main = () => {
                 ? "Obteniendo información"
                 : errorWeather
                 ? "No hay información"
-                : weatherData?.description}
+                : "Lluvia ligera"}
             </span>
           </div>
 
