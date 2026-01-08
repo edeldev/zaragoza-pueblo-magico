@@ -31,10 +31,6 @@ body {
   overflow-x: hidden;
 }
 
-:root {
-  --header-height: 130px;
-}
-
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
