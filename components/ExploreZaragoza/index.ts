@@ -1,1 +1,0 @@
-export { ExploreZaragoza } from "./ExploreZaragoza";

@@ -4,7 +4,7 @@ import { Container } from "../ui";
 
 export const About = () => {
   return (
-    <Container id="section-features">
+    <Container id="about">
       <div className="grid grid-cols-12 gap-5 shadow-xl p-7 rounded-xl">
         <ul className="col-span-12 md:col-span-7 space-y-5">
           {ABOUT.map((about) => (

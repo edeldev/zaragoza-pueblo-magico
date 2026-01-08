@@ -32,7 +32,7 @@ export const FOOTER_LINKS_EXPLORE: TFooterLink[] = [
   {
     id: 1,
     text: "Conocé Zaragoza",
-    url: "/#section-features",
+    url: "/#about",
   },
   {
     id: 2,
