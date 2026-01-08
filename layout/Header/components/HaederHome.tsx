@@ -86,11 +86,15 @@ export const HeaderHome = () => {
           <motion.div
             onClick={() => setIsMenuOpen(true)}
             className="cursor-pointer"
+            animate={{
+              scale: 1.1,
+              rotate: [0, 5, -5, 0],
+              opacity: 0.9,
+            }}
             whileHover={{
               scale: 1.25,
               rotate: [0, 15, -15, 0],
-              filter:
-                "drop-shadow(0 6px 12px rgba(255,255,255,0.6)) brightness(1.5)",
+
               transition: {
                 duration: 0.5,
                 ease: "easeInOut",
