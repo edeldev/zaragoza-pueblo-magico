@@ -28,7 +28,7 @@ export const Footer = () => {
 
       <div className="bg-primary py-3 text-center z-1 relative">
         <span className="text-white font-semibold">
-          © 2025 Gobierno de General Zaragoza N.L.
+          © 2026 Gobierno de General Zaragoza N.L.
         </span>
         <span className="block text-sm text-white italic">
           Todos los derechos reservados
