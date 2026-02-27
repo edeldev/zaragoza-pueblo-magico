@@ -16,7 +16,7 @@ export const Maps = () => {
   };
 
   return (
-    <div className="col-span-12 md:col-span-5 sticky top-55 h-fit">
+    <div className="col-span-12 md:col-span-5 sticky top-30 h-fit">
       <div className="bg-gray-100 rounded-lg p-4">
         <h3 className="font-bold text-xl mb-4 text-center">
           Ubicación de Zaragoza
