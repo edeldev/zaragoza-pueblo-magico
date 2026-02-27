@@ -13,7 +13,6 @@
     "@strapi/blocks-react-renderer": "^1.0.2",
     "@tabler/icons-react": "^3.34.0",
     "clsx": "^2.1.1",
-    "gsap": "^3.13.0",
     "motion": "^12.22.0",
     "next": "^16.0.7",
     "next-sitemap": "^4.2.3",
