@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { getShareMetadata } from "@/utils/shareMetadata";
 import { getEventId } from "@/api/event";
 import { AnimationPage, ContainerPages } from "@/components";
 import { EventDetails } from "@/components/Events";
@@ -5,7 +7,7 @@ import { TEvent } from "@/interface/event";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { slug } = await props.params;
 
   const { eventId } = await getEventId({ slug });
@@ -19,15 +21,13 @@ export async function generateMetadata(props: {
 
   const event = eventId[0];
 
-  return {
-    title: `${event.title} | Zaragoza, Nuevo León`,
-    description: "Detalles del evento en General Zaragoza, Nuevo León.",
-    openGraph: {
-      title: event.title,
-      description: "Detalles del evento en General Zaragoza, Nuevo León.",
-      url: `/eventos/${event.slug}`,
-    },
-  };
+  return getShareMetadata({
+    title: event.title,
+    path: `/eventos/${event.slug}`,
+    image: event.imageUrl,
+    content: event.resume?.length ? event.resume : event.content,
+    fallbackDescription: "Detalles del evento en General Zaragoza, Nuevo León.",
+  });
 }
 
 export default async function eventId(props: {

@@ -49,11 +49,11 @@ export function getNewId({ slug }: TSlug) {
     const { data, meta } = res;
 
     const newId = data.map((n: TNew) => {
-      const { title, slug, content, contentTwo, date, images, video } = n;
+      const { title, slug, resume, content, contentTwo, date, images, video } = n;
 
       const imageUrl = resolveImageArray(images, 800);
 
-      return { title, slug, content, contentTwo, date, imageUrl, video };
+      return { title, slug, resume, content, contentTwo, date, imageUrl, video };
     });
 
     return { newId, pagination: meta?.pagination };

@@ -61,11 +61,12 @@ export function getEventId({ slug }: TSlug) {
       const { data, meta } = res;
 
       const eventId = data.map((event: TEvent) => {
-        const { title, slug, content, date, time, location, image } = event;
+        const { title, slug, resume, content, date, time, location, image } = event;
 
         return {
           title,
           slug,
+          resume,
           content,
           date,
           time,

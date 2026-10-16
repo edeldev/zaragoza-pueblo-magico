@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.generalzaragoza.mx"),
   title: "Gobierno de General Zaragoza, Nuevo León",
   description:
     "Descubre General Zaragoza, Nuevo León: un Pueblo Mágico rodeado de cascadas, montañas y naturaleza. Vive aventuras, historia y gastronomía única.",
