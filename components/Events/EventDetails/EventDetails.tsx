@@ -13,7 +13,7 @@ export const EventDetails = ({ eventId }: IEventDetail) => {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [previewLoading, setPreviewLoading] = useState(false);
 
-  const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/eventos/${eventId.slug}`;
+  const shareUrl = `/eventos/${eventId.slug}`;
   const { items } = useMoreContent("events", 3);
 
   const more =

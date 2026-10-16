@@ -1,27 +1,48 @@
 "use client";
-import { useEffect, useState } from "react";
+import type { MouseEvent } from "react";
 import { SHARED_PLATFORM } from "@/utils/sharedPlatform";
 import { ISocialShareButton } from "./types";
 
 export const SocialShareButtons = ({ shareUrl }: ISocialShareButton) => {
-  const [mounted, setMounted] = useState(false);
+  const absoluteShareUrl = new URL(
+    shareUrl,
+    "https://www.generalzaragoza.mx"
+  ).href;
 
-  useEffect(() => setMounted(true), []);
+  const handleShare = async (
+    event: MouseEvent<HTMLAnchorElement>,
+    name: string,
+    fallbackUrl: string
+  ) => {
+    // Let the browser handle modified clicks and ordinary web share links.
+    if (
+      name !== "Facebook" ||
+      event.button !== 0 ||
+      event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
+      !window.matchMedia("(pointer: coarse)").matches ||
+      !navigator.share ||
+      (navigator.canShare && !navigator.canShare({ url: absoluteShareUrl }))
+    ) return;
 
-  if (!mounted) return null;
-
-  const handleShare = (name: string) => {
-    const platform = SHARED_PLATFORM.find((p) => p.name === name);
-    const url = platform?.url(shareUrl);
-    if (url) window.open(url, "_blank");
+    event.preventDefault();
+    try {
+      await navigator.share({ url: absoluteShareUrl });
+    } catch (error) {
+      // Closing the system share sheet is an intentional cancellation.
+      if (error instanceof Error && error.name === "AbortError") return;
+      window.location.assign(fallbackUrl);
+    }
   };
 
   return (
     <ul className="flex justify-start items-center gap-4 mt-5">
-      {SHARED_PLATFORM.map(({ name, color, Icon }) => (
+      {SHARED_PLATFORM.map(({ name, color, Icon, url }) => (
         <li key={name} className="relative group">
-          <button
-            onClick={() => handleShare(name)}
+          <a
+            href={url(absoluteShareUrl)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(event) => void handleShare(event, name, url(absoluteShareUrl))}
             className="relative w-[40px] h-[40px] cursor-pointer rounded-[20%] flex items-center justify-center overflow-hidden bg-white text-gray-700 hover:text-white transition-all duration-300"
             aria-label={name}
           >
@@ -30,7 +51,7 @@ export const SocialShareButtons = ({ shareUrl }: ISocialShareButton) => {
               style={{ backgroundColor: color }}
             />
             <Icon className="w-6 h-6 z-10" />
-          </button>
+          </a>
           <div
             className="absolute top-[-40px] left-1/2 -translate-x-1/2 text-white text-sm px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"
             style={{ backgroundColor: color }}

@@ -7,7 +7,7 @@ import { useMoreContent } from "@/hooks";
 import { adaptContent } from "@/utils";
 
 export const NewDetails = ({ newId }: INewDetail) => {
-  const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/noticias/${newId.slug}`;
+  const shareUrl = `/noticias/${newId.slug}`;
 
   const { items } = useMoreContent("news", 3);
 
